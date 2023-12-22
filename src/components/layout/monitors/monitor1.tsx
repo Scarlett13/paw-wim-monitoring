@@ -1,5 +1,6 @@
 import type { FunctionComponent } from "@/src/common/types";
 import { StatusCard } from "../../cards";
+import Typography from "../../ui/default-typography";
 
 const MonitorTopLeft = (): FunctionComponent => {
 	return (
@@ -16,7 +17,11 @@ const MonitorTopLeft = (): FunctionComponent => {
 				</div>
 				{/* ok status */}
 				<div className="row-span-2 bg-orange-500">
-					<StatusCard />
+					<StatusCard className="bg-white h-full w-full">
+						<Typography variant="j1" className="text-center mt-4">
+							OK
+						</Typography>
+					</StatusCard>
 				</div>
 				{/* warning status */}
 				<div className="row-span-2 bg-amber-500">Warning status</div>

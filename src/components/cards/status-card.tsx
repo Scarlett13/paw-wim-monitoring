@@ -1,4 +1,4 @@
-import clsxm from "@src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import * as React from "react";
 
 const CARD_SIZE = ["sm", "base"] as const;
@@ -17,10 +17,10 @@ export default function StatusCard({
 		<div
 			className={clsxm(
 				"bg-background shadow-sm",
-				[
-					size === "sm" && ["p-4", "rounded-lg"],
-					size === "base" && ["p-5", "rounded-xl"],
-				],
+				// [
+				// 	size === "sm" && ["p-4", "rounded-lg"],
+				// 	size === "base" && ["p-5", "rounded-xl"],
+				// ],
 				className
 			)}
 			{...rest}

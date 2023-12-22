@@ -1,6 +1,6 @@
 "use client";
 
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import * as React from "react";

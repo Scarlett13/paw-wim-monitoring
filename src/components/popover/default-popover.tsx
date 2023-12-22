@@ -1,4 +1,4 @@
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 

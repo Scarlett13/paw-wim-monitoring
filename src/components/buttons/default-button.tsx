@@ -1,4 +1,4 @@
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import * as React from "react";
 import { IconType } from "react-icons";
 import { ImSpinner2 } from "react-icons/im";

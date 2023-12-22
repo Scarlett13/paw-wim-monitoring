@@ -1,4 +1,4 @@
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import { cva, VariantProps } from "class-variance-authority";
 import * as React from "react";
 

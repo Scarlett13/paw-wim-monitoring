@@ -1,4 +1,4 @@
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import * as React from "react";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;

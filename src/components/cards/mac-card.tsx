@@ -1,4 +1,4 @@
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import clsx from "clsx";
 import * as React from "react";
 

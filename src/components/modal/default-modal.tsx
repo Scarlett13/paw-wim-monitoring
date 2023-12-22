@@ -5,7 +5,7 @@ import { HiOutlineX } from "react-icons/hi";
 import IconButton from "../buttons/icon-button";
 import Typography from "../ui/default-typography";
 
-import clsxm from "@/src/libs/clsxm";
+import clsxm from "../../libs/clsxm";
 import { ExtractProps } from "@/src/types/helper";
 
 type ModalProps = {
