@@ -1,4 +1,5 @@
 import type { FunctionComponent } from "@/src/common/types";
+import { StatusCard } from "../../cards";
 
 const MonitorTopLeft = (): FunctionComponent => {
 	return (
@@ -14,7 +15,9 @@ const MonitorTopLeft = (): FunctionComponent => {
 					map
 				</div>
 				{/* ok status */}
-				<div className="row-span-2 bg-orange-500">OK status</div>
+				<div className="row-span-2 bg-orange-500">
+					<StatusCard />
+				</div>
 				{/* warning status */}
 				<div className="row-span-2 bg-amber-500">Warning status</div>
 				{/* on off status */}
