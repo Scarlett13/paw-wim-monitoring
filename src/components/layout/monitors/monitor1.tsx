@@ -17,18 +17,45 @@ const MonitorTopLeft = (): FunctionComponent => {
 				</div>
 				{/* ok status */}
 				<div className="row-span-2 bg-orange-500">
-					<StatusCard className="bg-white h-full w-full">
-						<Typography variant="j1" className="text-center mt-4">
+					<StatusCard
+						cardstatus="ok"
+						className="bg-white h-full w-full flex flex-col gap-5"
+					>
+						<Typography variant="j1" className="text-center">
 							OK
+						</Typography>
+						<Typography variant="j1" className="text-center text-7xl">
+							15
 						</Typography>
 					</StatusCard>
 				</div>
 				{/* warning status */}
-				<div className="row-span-2 bg-amber-500">Warning status</div>
+				<div className="row-span-2 bg-amber-500">
+					<StatusCard cardstatus="warning" className="bg-white h-full w-full">
+						<Typography variant="j1" className="text-center">
+							WARNING
+						</Typography>
+					</StatusCard>
+				</div>
 				{/* on off status */}
-				<div className="row-span-2 bg-yellow-700">OFF/ON status</div>
+				<div className="row-span-2 bg-yellow-700">
+					<StatusCard cardstatus="off" className="bg-white h-full w-full">
+						<Typography variant="j1" className="text-center">
+							OFF
+						</Typography>
+					</StatusCard>
+				</div>
 				{/* maintenance status */}
-				<div className="row-span-2 bg-lime-700">MT status</div>
+				<div className="row-span-2 bg-lime-700">
+					<StatusCard
+						cardstatus="maintenance"
+						className="bg-white h-full w-full"
+					>
+						<Typography variant="j1" className="text-center">
+							MT
+						</Typography>
+					</StatusCard>
+				</div>
 			</div>
 		</>
 	);
