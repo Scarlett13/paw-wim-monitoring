@@ -23,7 +23,7 @@ export default function StatusCard({
 				"bg-background shadow-sm",
 				[
 					size === "sm" && ["p-4", "rounded-lg"],
-					size === "base" && ["p-4", "rounded-xl"],
+					size === "base" && ["p-2", "rounded-xl"],
 				],
 				[
 					cardstatus === "ok" && ["text-green-500"],
