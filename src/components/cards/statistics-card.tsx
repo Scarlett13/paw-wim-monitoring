@@ -1,9 +1,9 @@
 import * as React from "react";
 import { IconType } from "react-icons";
 
-import Skeleton from "@src/components/ui/default-skeleton";
-import Typography from "@src/components/ui/default-typography";
-import clsxm from "@/src/libs/clsxm";
+import Skeleton from "../ui/default-skeleton";
+import Typography from "../ui/default-typography";
+import clsxm from "../../libs/clsxm";
 
 const statisticsCardVariant = [
 	"primary",
