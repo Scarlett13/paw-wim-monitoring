@@ -6,7 +6,7 @@ const MonitorTopLeft = (): FunctionComponent => {
 	return (
 		<>
 			{/* Monitor 1 */}
-			<div className="bg-blue-500 grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
+			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
 				<div className="bg-neutral-600 w-full text-center col-span-1">logo</div>
 				<div className="bg-purple-600 w-full text-center col-span-2">title</div>
@@ -16,44 +16,67 @@ const MonitorTopLeft = (): FunctionComponent => {
 					map
 				</div>
 				{/* ok status */}
-				<div className="row-span-2 bg-orange-500">
+				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="ok"
-						className="bg-white h-full w-full flex flex-col gap-5"
+						className="bg-white h-full w-full flex flex-col gap-3"
 					>
 						<Typography variant="j1" className="text-center">
 							OK
 						</Typography>
-						<Typography variant="j1" className="text-center text-7xl">
-							15
-						</Typography>
+						<div className="border-t border-gray-500 flex-grow">
+							<Typography variant="j1" className="text-center text-7xl">
+								15
+							</Typography>
+						</div>
 					</StatusCard>
 				</div>
 				{/* warning status */}
-				<div className="row-span-2 bg-amber-500">
-					<StatusCard cardstatus="warning" className="bg-white h-full w-full">
+				<div className="row-span-2 shadow-md m-2 rounded-lg">
+					<StatusCard
+						cardstatus="warning"
+						className="bg-white h-full w-full flex flex-col gap-3"
+					>
 						<Typography variant="j1" className="text-center">
 							WARNING
 						</Typography>
+						<div className="border-t border-gray-500 flex-grow">
+							<Typography variant="j1" className="text-center text-7xl">
+								0
+							</Typography>
+						</div>
 					</StatusCard>
 				</div>
 				{/* on off status */}
-				<div className="row-span-2 bg-yellow-700">
-					<StatusCard cardstatus="off" className="bg-white h-full w-full">
+				<div className="row-span-2 shadow-md m-2 rounded-lg">
+					<StatusCard
+						cardstatus="off"
+						className="bg-white h-full w-full flex flex-col gap-3"
+					>
 						<Typography variant="j1" className="text-center">
 							OFF
 						</Typography>
+						<div className="border-t border-gray-500 flex-grow">
+							<Typography variant="j1" className="text-center text-7xl">
+								0
+							</Typography>
+						</div>
 					</StatusCard>
 				</div>
 				{/* maintenance status */}
-				<div className="row-span-2 bg-lime-700">
+				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="maintenance"
-						className="bg-white h-full w-full"
+						className="bg-white h-full w-full flex flex-col gap-3"
 					>
 						<Typography variant="j1" className="text-center">
 							MT
 						</Typography>
+						<div className="border-t border-gray-500 flex-grow">
+							<Typography variant="j1" className="text-center text-7xl">
+								0
+							</Typography>
+						</div>
 					</StatusCard>
 				</div>
 			</div>
