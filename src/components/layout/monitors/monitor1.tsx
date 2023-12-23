@@ -10,7 +10,9 @@ const MonitorTopLeft = (): FunctionComponent => {
 				{/* title and logo */}
 				<div className="bg-neutral-600 w-full text-center col-span-1">logo</div>
 				<div className="bg-purple-600 w-full text-center col-span-2">
-					<div className="mt-4">WIM Monitoring</div>
+					<Typography variant="j1" className="mt-4">
+						WIM Monitoring
+					</Typography>
 				</div>
 				<div className=" bg-pink-600 w-full text-center col-span-1">logo</div>
 				{/* map */}
