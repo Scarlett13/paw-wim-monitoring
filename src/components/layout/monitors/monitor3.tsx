@@ -12,7 +12,7 @@ const MonitorBottomLeft = (): FunctionComponent => {
 				<div className="col-span-4 text-center mr-3 ml-3">
 					<SimpleCard className="shadow-lg">
 						<Typography variant="h1" className="mt-6">
-							Example Site Name
+							Daftar status WIM
 						</Typography>
 					</SimpleCard>
 				</div>

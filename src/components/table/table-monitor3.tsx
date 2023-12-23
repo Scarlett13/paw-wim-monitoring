@@ -17,20 +17,14 @@ export default function Table() {
 		{ id: 13, siteName: "Example Site 13", status: "Inactive" },
 		{ id: 14, siteName: "Example Site 14", status: "Inactive" },
 		{ id: 15, siteName: "Example Site 15", status: "Inactive" },
-		{ id: 16, siteName: "Example Site 16", status: "Inactive" },
-		{ id: 17, siteName: "Example Site 17", status: "Inactive" },
-		{ id: 18, siteName: "Example Site 18", status: "Inactive" },
-		{ id: 19, siteName: "Example Site 19", status: "Inactive" },
-		{ id: 20, siteName: "Example Site 20", status: "Inactive" },
-		{ id: 21, siteName: "Example Site 21", status: "Inactive" },
 	];
 
 	return (
 		<TableCard>
 			<div className="container mx-auto">
 				<div className="max-h-[460px] overflow-y-auto">
-					<table className="min-w-full ">
-						<thead>
+					<table className="min-w-full">
+						<thead className="sticky -top-1 bg-white z-10">
 							<tr className="bg-gray-200 border-2">
 								<th className="border px-4 py-2">No</th>
 								<th className="border px-4 py-2">Site Name</th>
