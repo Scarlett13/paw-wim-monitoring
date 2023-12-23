@@ -9,7 +9,9 @@ const MonitorTopLeft = (): FunctionComponent => {
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
 				<div className="bg-neutral-600 w-full text-center col-span-1">logo</div>
-				<div className="bg-purple-600 w-full text-center col-span-2">title</div>
+				<div className="bg-purple-600 w-full text-center col-span-2">
+					<div className="mt-4">WIM Monitoring</div>
+				</div>
 				<div className=" bg-pink-600 w-full text-center col-span-1">logo</div>
 				{/* map */}
 				<div className="col-span-4 row-span-4 bg-slate-900 text-amber-50 text-center h-full">
