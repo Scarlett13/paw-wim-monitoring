@@ -7,6 +7,8 @@ import { countStatus } from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
+import logoGBU from "../../../../public/Logo-GBU-1.svg";
+import logoVGT from "../../../../public/Logo-VGT-1.svg";
 // import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {
@@ -45,7 +47,7 @@ const MonitorTopLeft = ({
 				{/* title and logo */}
 				<div className="w-full col-span-1 border-r-2 border-gray-300">
 					<img
-						src="../public/Logo-GBU-2.svg"
+						src={logoGBU}
 						alt="Logo-GBU-2"
 						className="object-cover ml-10 w-60 h-20"
 					/>
@@ -57,7 +59,7 @@ const MonitorTopLeft = ({
 				</div>
 				<div className="w-full text-center col-span-1 border-l-2 border-gray-300">
 					<img
-						src="../public/Logo-VGT-1.svg"
+						src={logoVGT}
 						alt="Logo-VGT-1"
 						className="object-cover ml-14 w-48 h-20"
 					/>

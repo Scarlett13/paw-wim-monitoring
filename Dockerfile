@@ -8,9 +8,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN exec sh &&\
-    pnpm install --frozen-lockfile &&\
-    pnpm run build
+RUN yarn install &&\
+	yarn build
 
 RUN cp -r /app/dist/* /usr/share/nginx/html
 
