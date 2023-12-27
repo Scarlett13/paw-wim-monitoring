@@ -12,7 +12,7 @@ const MonitorTopLeft = (): FunctionComponent => {
 					<img
 						src="../public/Logo-GBU-2.svg"
 						alt="Logo-GBU-2"
-						className="object-cover w-40 h-20"
+						className="object-cover ml-9 w-40 h-20"
 					/>
 				</div>
 				<div className="w-full text-center col-span-2">
@@ -24,7 +24,7 @@ const MonitorTopLeft = (): FunctionComponent => {
 					<img
 						src="../public/Logo-VGT-1.svg"
 						alt="Logo-VGT-1"
-						className="ml-16 object-cover w-44 h-20"
+						className="ml-9 object-cover w-44 h-20"
 					/>
 				</div>
 				{/* map */}
