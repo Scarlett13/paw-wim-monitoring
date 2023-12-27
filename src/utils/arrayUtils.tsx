@@ -15,6 +15,18 @@ export function countStatus(obj: any[], status: string): number {
 	return count;
 }
 
+export function findSiteObjectFromId(
+	id: string,
+	sites: IWimStatusResponse[] | null
+): IWimStatusResponse | undefined {
+	if (!sites) {
+		return undefined;
+	}
+	const personInFirstArray = sites.find((site) => site.siteid === id);
+
+	return personInFirstArray || undefined;
+}
+
 export function mergeObjectsArray(
 	arr1: MapMarker[],
 	arr2: IWimStatusResponse[]
@@ -83,7 +95,7 @@ export function mergeObjectsArray(
 				disk: {
 					status: "OFF",
 					instance: "-",
-					free_spaces: "-",
+					usage_percent: "-",
 				},
 			};
 			mergedArray.push(newObj2);
