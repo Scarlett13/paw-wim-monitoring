@@ -1,8 +1,43 @@
 import type { FunctionComponent } from "@/src/common/types";
 import { StatusCard } from "../../cards";
 import Typography from "../../ui/default-typography";
+import { MyMap } from "../../ui/default-map";
+// import logger from "../../../libs/logger";
+import { countStatus } from "../../../utils/arrayUtils";
+import { useEffect, useState } from "react";
+import { IWimStatusResponse } from "@/src/types/response";
+import Skeleton from "../../ui/default-skeleton";
+// import { IWimStatusResponse } from "@/src/types/response";
 
-const MonitorTopLeft = (): FunctionComponent => {
+interface MonitorTopLeftProps {
+	selectedSiteMapHook: React.Dispatch<
+		React.SetStateAction<IWimStatusResponse | null>
+	>;
+	listMergedSiteData: any[];
+	isLoading: boolean;
+}
+
+const MonitorTopLeft = ({
+	selectedSiteMapHook,
+	listMergedSiteData,
+	isLoading,
+}: MonitorTopLeftProps): FunctionComponent => {
+	const [countOk, setCountOk] = useState<number | string>(0);
+	const [countWarning, setCountWarning] = useState<number | string>(0);
+	const [countOff, setCountOff] = useState<number | string>(0);
+
+	useEffect(() => {
+		if (listMergedSiteData) {
+			setCountOff(countStatus(listMergedSiteData, "red"));
+			setCountOk(countStatus(listMergedSiteData, "green"));
+			setCountWarning(countStatus(listMergedSiteData, "orange"));
+		} else {
+			setCountOff("error");
+			setCountOk("error");
+			setCountWarning("error");
+		}
+	}, [listMergedSiteData]);
+
 	return (
 		<>
 			{/* Monitor 1 */}
@@ -20,7 +55,8 @@ const MonitorTopLeft = (): FunctionComponent => {
 						WIM Monitoring
 					</Typography>
 				</div>
-				<div className="w-full text-center col-span-1 border-l-2 border-gray-300">
+				<div className="w-full text-center col-span-1 border-l-2 border-gray-500">
+
 					<img
 						src="../public/Logo-VGT-1.svg"
 						alt="Logo-VGT-1"
@@ -28,8 +64,12 @@ const MonitorTopLeft = (): FunctionComponent => {
 					/>
 				</div>
 				{/* map */}
-				<div className="col-span-4 row-span-4 bg-slate-900 text-amber-50 text-center h-full">
-					map
+				<div className="col-span-4 row-span-4 text-center h-full">
+					<MyMap
+						isLoading={isLoading}
+						markers={listMergedSiteData}
+						selectedSiteMapHook={selectedSiteMapHook}
+					/>
 				</div>
 				{/* ok status */}
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
@@ -41,9 +81,13 @@ const MonitorTopLeft = (): FunctionComponent => {
 							OK
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								15
-							</Typography>
+							{isLoading ? (
+								<Skeleton className="h-full w-full" />
+							) : (
+								<Typography variant="j1" className="text-center text-7xl">
+									{countOk}
+								</Typography>
+							)}
 						</div>
 					</StatusCard>
 				</div>
@@ -57,9 +101,13 @@ const MonitorTopLeft = (): FunctionComponent => {
 							WARNING
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								0
-							</Typography>
+							{isLoading ? (
+								<Skeleton className="h-full w-full" />
+							) : (
+								<Typography variant="j1" className="text-center text-7xl">
+									{countWarning}
+								</Typography>
+							)}
 						</div>
 					</StatusCard>
 				</div>
@@ -73,9 +121,13 @@ const MonitorTopLeft = (): FunctionComponent => {
 							OFF
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								0
-							</Typography>
+							{isLoading ? (
+								<Skeleton className="h-full w-full" />
+							) : (
+								<Typography variant="j1" className="text-center text-7xl">
+									{countOff}
+								</Typography>
+							)}
 						</div>
 					</StatusCard>
 				</div>
