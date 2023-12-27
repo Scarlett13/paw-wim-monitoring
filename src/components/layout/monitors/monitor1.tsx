@@ -43,7 +43,7 @@ const MonitorTopLeft = ({
 			{/* Monitor 1 */}
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
-				<div className="w-full text-center col-span-1 border-r-2 border-gray-300">
+				<div className="w-full text-center col-span-1 border-r-2 border-gray-500">
 					<img
 						src="../public/Logo-GBU-2.svg"
 						alt="Logo-GBU-2"
@@ -55,7 +55,8 @@ const MonitorTopLeft = ({
 						WIM Monitoring
 					</Typography>
 				</div>
-				<div className="w-full text-center col-span-1 border-l-2 border-gray-300">
+				<div className="w-full text-center col-span-1 border-l-2 border-gray-500">
+
 					<img
 						src="../public/Logo-VGT-1.svg"
 						alt="Logo-VGT-1"
