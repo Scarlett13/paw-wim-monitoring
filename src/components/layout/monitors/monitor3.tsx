@@ -17,7 +17,7 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					</SimpleCard>
 				</div>
 				{/* table */}
-				<div className="col-span-4 row-span-6">
+				<div className="col-span-4 row-span-6 mt-2">
 					<Table />
 				</div>
 			</div>
