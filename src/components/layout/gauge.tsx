@@ -10,6 +10,8 @@ interface IGaugeLayout {
 	isLoading: boolean;
 	textSuffix?: string;
 	textPrefix?: string;
+	min?: number;
+	max?: number;
 }
 
 export default function GaugeLayout({
@@ -20,6 +22,8 @@ export default function GaugeLayout({
 	textSuffix = "",
 	textPrefix = "",
 	isLoading,
+	min = 0,
+	max = 100,
 }: IGaugeLayout) {
 	return (
 		<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
@@ -34,6 +38,8 @@ export default function GaugeLayout({
 						onoff={onoff}
 						textPrefix={textPrefix}
 						textSuffix={textSuffix}
+						min={min}
+						max={max}
 					/>
 				</Typography>
 			)}

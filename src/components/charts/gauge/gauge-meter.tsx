@@ -7,6 +7,8 @@ interface IGaugeMeter {
 	textPrefix: string;
 	color: string;
 	onoff: boolean;
+	min?: number;
+	max?: number;
 }
 
 const GaugeMeter = ({
@@ -15,6 +17,8 @@ const GaugeMeter = ({
 	textPrefix,
 	color,
 	onoff,
+	min = 0,
+	max = 100,
 }: IGaugeMeter) => {
 	const [pointers, setPointers] = useState<ISettingsPointer[]>([
 		{ value: valuegg },
@@ -78,11 +82,11 @@ const GaugeMeter = ({
 			textSuffix={textSuffix}
 			textPrefix={textPrefix}
 			showTickValues={false}
-			min={0}
 			pointerBgColorDisabled={color}
 			connectionBgColorDisabled={color}
 			disabled={true}
-			max={100}
+			min={min}
+			max={max}
 			pathRadius={115}
 		/>
 	);

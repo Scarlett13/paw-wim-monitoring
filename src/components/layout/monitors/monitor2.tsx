@@ -25,6 +25,20 @@ const MonitorTopRight = ({
 }: MonitorTopRightProps): FunctionComponent => {
 	const network = getNerworkBytes(selectedSite?.network.download || "-");
 
+	const calculateScale = (dataSize: number) => {
+		if (dataSize <= 1024) {
+			return { min: 0, max: 1024, unit: "KB" }; // Scale for data sizes up to 1 KB
+		} else if (dataSize <= 1024 * 1024) {
+			return { min: 0, max: 1024, unit: "MB" }; // Scale for data sizes up to 1 MB
+		} else {
+			return { min: 0, max: dataSize, unit: "MB" }; // Scale for larger data sizes
+		}
+	};
+
+	const initialScale = calculateScale(
+		(selectedSite?.network.download as number) || 0
+	);
+
 	return selectedSite ? (
 		<>
 			{/* monitor 2 - todo: sesuaikan rows nya, ini dibikin 7 biar bagus waktu di color-coded*/}
@@ -84,6 +98,8 @@ const MonitorTopRight = ({
 					onoff={selectedSite.network.status === "OFF"}
 					textSuffix={network.unit || ""}
 					textPrefix=""
+					min={initialScale.min}
+					max={initialScale.max}
 				/>
 
 				{/* Wim Logic */}
