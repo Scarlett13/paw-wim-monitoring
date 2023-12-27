@@ -32,7 +32,8 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"commitlint": "commitlint --edit",
-		"commitizen": "exec < /dev/tty && git cz --hook || true"
+		"commitizen": "exec < /dev/tty && git cz --hook || true",
+		"deploy": "tsc && vite build && pm2 start ecosystem.config.js --env production"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.1.1",
