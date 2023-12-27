@@ -17,7 +17,7 @@ export function countStatus(obj: any[], status: string): number {
 
 export function findSiteObjectFromId(
 	id: string,
-	sites: IWimStatusResponse[]
+	sites: IWimStatusResponse[] | null
 ): IWimStatusResponse | undefined {
 	if (!sites) {
 		return undefined;

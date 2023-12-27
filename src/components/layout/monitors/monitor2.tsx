@@ -4,23 +4,24 @@ import Typography from "../../ui/default-typography";
 // import { MapMarker } from "@/src/types/map-marker";
 import { MonitorEmptyState } from "./monitor-empty-state";
 import { IWimStatusResponse } from "@/src/types/response";
-import { GaugeLayout } from "..";
+import { GaugeLayout, OnOffStatusLayout } from "..";
 import {
 	getColorFromStatus,
 	getTypographyColorFromStatus,
 } from "../../utils/colorPickerUtils";
 import { formatNumberWithTwoDecimals } from "../../utils/numberUtils";
 import { getNerworkBytes } from "../../../utils/bytesUtils";
-import OnOffStatusLayout from "../on-off-status";
 
 // import logger from "../../../libs/logger";
 
 interface MonitorTopRightProps {
 	selectedSite: IWimStatusResponse | null;
+	isLoading: boolean;
 }
 
 const MonitorTopRight = ({
 	selectedSite,
+	isLoading,
 }: MonitorTopRightProps): FunctionComponent => {
 	const network = getNerworkBytes(selectedSite?.network.download || "-");
 
@@ -37,6 +38,7 @@ const MonitorTopRight = ({
 
 				{/* CPU */}
 				<GaugeLayout
+					isLoading={isLoading}
 					title="CPU"
 					value={formatNumberWithTwoDecimals(
 						selectedSite.cpu.processor_usage as number
@@ -49,6 +51,7 @@ const MonitorTopRight = ({
 
 				{/* Memory */}
 				<GaugeLayout
+					isLoading={isLoading}
 					title="MEMORY"
 					value={formatNumberWithTwoDecimals(
 						selectedSite.memory.usage_percent as number
@@ -61,6 +64,7 @@ const MonitorTopRight = ({
 
 				{/* Disk */}
 				<GaugeLayout
+					isLoading={isLoading}
 					title={`Disk Usage`}
 					value={formatNumberWithTwoDecimals(
 						selectedSite.disk.usage_percent as number
@@ -73,6 +77,7 @@ const MonitorTopRight = ({
 
 				{/* Network */}
 				<GaugeLayout
+					isLoading={isLoading}
 					title="Network"
 					value={formatNumberWithTwoDecimals(network.value)}
 					color={getColorFromStatus(selectedSite.network.status)}
@@ -81,26 +86,37 @@ const MonitorTopRight = ({
 					textPrefix=""
 				/>
 
+				{/* Wim Logic */}
 				<OnOffStatusLayout
+					isLoading={isLoading}
 					title="Wim Logic Ping"
 					value={selectedSite.ping.wim_logic.status}
 					color={getTypographyColorFromStatus(
 						selectedSite.ping.wim_logic.status
 					)}
 				/>
+
+				{/* Camera */}
 				<OnOffStatusLayout
+					isLoading={isLoading}
 					title="Camera Ping"
 					value={selectedSite.ping.camera.status}
 					color={getTypographyColorFromStatus(selectedSite.ping.camera.status)}
 				/>
+
+				{/* Wim App */}
 				<OnOffStatusLayout
+					isLoading={isLoading}
 					title="Wim App"
 					value={selectedSite.app_process.wim_app.status}
 					color={getTypographyColorFromStatus(
 						selectedSite.app_process.wim_app.status
 					)}
 				/>
+
+				{/* VPN App */}
 				<OnOffStatusLayout
+					isLoading={isLoading}
 					title="VPN App"
 					value={selectedSite.app_process.vpn_app.status}
 					color={getTypographyColorFromStatus(

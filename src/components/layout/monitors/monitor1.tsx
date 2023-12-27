@@ -2,66 +2,41 @@ import type { FunctionComponent } from "@/src/common/types";
 import { StatusCard } from "../../cards";
 import Typography from "../../ui/default-typography";
 import { MyMap } from "../../ui/default-map";
-
-import { dummyMarker } from "../../../types/map-marker";
 // import logger from "../../../libs/logger";
-import {
-	countStatus,
-	findSiteObjectFromId,
-	mergeObjectsArray,
-} from "../../../utils/arrayUtils";
+import { countStatus } from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
+import Skeleton from "../../ui/default-skeleton";
 // import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {
 	selectedSiteMapHook: React.Dispatch<
 		React.SetStateAction<IWimStatusResponse | null>
 	>;
-	currentSelectedSite: IWimStatusResponse | null;
-	listSiteData: any[];
+	listMergedSiteData: any[];
+	isLoading: boolean;
 }
 
 const MonitorTopLeft = ({
 	selectedSiteMapHook,
-	currentSelectedSite,
-	listSiteData,
+	listMergedSiteData,
+	isLoading,
 }: MonitorTopLeftProps): FunctionComponent => {
-	const [mergedSite, setMergedSite] = useState<any[] | null>(null);
 	const [countOk, setCountOk] = useState<number | string>(0);
 	const [countWarning, setCountWarning] = useState<number | string>(0);
 	const [countOff, setCountOff] = useState<number | string>(0);
 
 	useEffect(() => {
-		const tempMergedSite = mergeObjectsArray(dummyMarker, listSiteData);
-
-		if (tempMergedSite) {
-			setCountOff(countStatus(tempMergedSite, "red"));
-			setCountOk(countStatus(tempMergedSite, "green"));
-			setCountWarning(countStatus(tempMergedSite, "orange"));
+		if (listMergedSiteData) {
+			setCountOff(countStatus(listMergedSiteData, "red"));
+			setCountOk(countStatus(listMergedSiteData, "green"));
+			setCountWarning(countStatus(listMergedSiteData, "orange"));
 		} else {
 			setCountOff("error");
 			setCountOk("error");
 			setCountWarning("error");
 		}
-
-		setMergedSite(tempMergedSite);
-	}, [dummyMarker, listSiteData]);
-
-	useEffect(() => {
-		if (currentSelectedSite) {
-			const currentsite = findSiteObjectFromId(
-				currentSelectedSite.siteid,
-				mergedSite as IWimStatusResponse[]
-			);
-
-			selectedSiteMapHook(currentsite || null);
-		}
-	}, [mergedSite]);
-
-	if (!mergedSite) {
-		return <></>;
-	}
+	}, [listMergedSiteData]);
 
 	return (
 		<>
@@ -88,9 +63,10 @@ const MonitorTopLeft = ({
 					/>
 				</div>
 				{/* map */}
-				<div className="col-span-4 row-span-4 bg-slate-900 text-amber-50 text-center h-full">
+				<div className="col-span-4 row-span-4 text-center h-full">
 					<MyMap
-						markers={mergedSite}
+						isLoading={isLoading}
+						markers={listMergedSiteData}
 						selectedSiteMapHook={selectedSiteMapHook}
 					/>
 				</div>
@@ -104,9 +80,13 @@ const MonitorTopLeft = ({
 							OK
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								{countOk}
-							</Typography>
+							{isLoading ? (
+								<Skeleton className="h-full w-full" />
+							) : (
+								<Typography variant="j1" className="text-center text-7xl">
+									{countOk}
+								</Typography>
+							)}
 						</div>
 					</StatusCard>
 				</div>
@@ -120,9 +100,13 @@ const MonitorTopLeft = ({
 							WARNING
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								{countWarning}
-							</Typography>
+							{isLoading ? (
+								<Skeleton className="h-full w-full" />
+							) : (
+								<Typography variant="j1" className="text-center text-7xl">
+									{countWarning}
+								</Typography>
+							)}
 						</div>
 					</StatusCard>
 				</div>
@@ -136,9 +120,13 @@ const MonitorTopLeft = ({
 							OFF
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								{countOff}
-							</Typography>
+							{isLoading ? (
+								<Skeleton className="h-full w-full" />
+							) : (
+								<Typography variant="j1" className="text-center text-7xl">
+									{countOff}
+								</Typography>
+							)}
 						</div>
 					</StatusCard>
 				</div>

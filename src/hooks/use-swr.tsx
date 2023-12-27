@@ -13,7 +13,7 @@ export function useSiteStatus() {
 		"/v1/wim-status",
 		fetcher,
 		{
-			refreshInterval: 60000, //60 seconds
+			refreshInterval: 30000, //30 seconds
 			revalidateOnFocus: false,
 		}
 	);
