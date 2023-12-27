@@ -43,7 +43,7 @@ const MonitorTopLeft = ({
 			{/* Monitor 1 */}
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
-				<div className="w-full text-center col-span-1 border-r-2 border-gray-500">
+				<div className="w-full text-center col-span-1 border-r-2 border-gray-300">
 					<img
 						src="../public/Logo-GBU-2.svg"
 						alt="Logo-GBU-2"
@@ -55,7 +55,7 @@ const MonitorTopLeft = ({
 						WIM Monitoring
 					</Typography>
 				</div>
-				<div className="w-full text-center col-span-1 border-l-2 border-gray-500">
+				<div className="w-full text-center col-span-1 border-l-2 border-gray-300">
 					<img
 						src="../public/Logo-VGT-1.svg"
 						alt="Logo-VGT-1"
@@ -74,7 +74,7 @@ const MonitorTopLeft = ({
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="ok"
-						className="bg-white h-full w-full flex flex-col gap-3"
+						className="bg-white h-full w-full flex flex-col gap-3 border-4 border-gray-300"
 					>
 						<Typography variant="j1" className="text-center">
 							OK
@@ -94,7 +94,7 @@ const MonitorTopLeft = ({
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="warning"
-						className="bg-white h-full w-full flex flex-col gap-3"
+						className="bg-white h-full w-full flex flex-col gap-3 border-4 border-gray-300"
 					>
 						<Typography variant="j1" className="text-center">
 							WARNING
@@ -114,7 +114,7 @@ const MonitorTopLeft = ({
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="off"
-						className="bg-white h-full w-full flex flex-col gap-3"
+						className="bg-white h-full w-full flex flex-col gap-3 border-4 border-gray-300"
 					>
 						<Typography variant="j1" className="text-center">
 							OFF
@@ -134,7 +134,7 @@ const MonitorTopLeft = ({
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="maintenance"
-						className="bg-white h-full w-full flex flex-col gap-3"
+						className="bg-white h-full w-full flex flex-col gap-3 border-4 border-gray-300"
 					>
 						<Typography variant="j1" className="text-center">
 							MT
