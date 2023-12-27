@@ -3,12 +3,11 @@ module.exports = {
 		{
 			name: "frontend",
 			script: "yarn",
-			args: "preview --host",
-			instances: 2,
+			args: "preview",
+			instances: 1,
 			autorestart: true,
 			watch: false,
-			time: true,
-			exec_mode: "cluster",
+			max_memory_restart: "2G",
 			env: {
 				NODE_ENV: "production",
 			},

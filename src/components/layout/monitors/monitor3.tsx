@@ -1,9 +1,22 @@
 import type { FunctionComponent } from "@/src/common/types";
-import Table from "../../table/table-monitor3";
+// import Table from "../../table/table-monitor3";
 import Typography from "../../ui/default-typography";
-import { SimpleCard } from "../../cards";
+import { SimpleCard, StatisticsCard } from "../../cards";
 
-const MonitorBottomLeft = (): FunctionComponent => {
+import { IconType } from "react-icons";
+import { getIconCardSite, getStatusCardSite } from "../../../utils/statusUtils";
+import { getShortcut } from "../../../utils/keyPressedUtils";
+
+interface MonitorBottomLeftProps {
+	listMergedSiteData: any[];
+	isLoading: boolean;
+}
+
+const MonitorBottomLeft = ({
+	listMergedSiteData,
+	isLoading,
+}: MonitorBottomLeftProps): FunctionComponent => {
+	// console.log(listMergedSiteData);
 	return (
 		<>
 			{/* monitor 3 */}
@@ -16,10 +29,28 @@ const MonitorBottomLeft = (): FunctionComponent => {
 						</Typography>
 					</SimpleCard>
 				</div>
-				{/* table */}
-				<div className="col-span-4 row-span-6">
-					<Table />
-				</div>
+
+				{listMergedSiteData &&
+					listMergedSiteData.map((sitedata) => {
+						const status = getStatusCardSite(sitedata);
+						const icon: IconType = getIconCardSite(sitedata);
+						const shortcut = getShortcut(sitedata.siteid);
+						return (
+							<div
+								className="bg-white h-full w-full px-8"
+								key={sitedata.siteid}
+							>
+								<StatisticsCard
+									variant={status}
+									isLoading={isLoading}
+									icon={icon}
+									className="shadow-md"
+									label={`Shortcut: ${shortcut}`}
+									value={sitedata.sitename}
+								/>
+							</div>
+						);
+					})}
 			</div>
 		</>
 	);

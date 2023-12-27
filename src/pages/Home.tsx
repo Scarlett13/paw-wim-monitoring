@@ -37,7 +37,7 @@ const Home = (): FunctionComponent => {
 
 			const mapperKey = getKeyShortcut(event.key);
 			const datasitebykey = findSiteObjectFromId(mapperKey || "", mergedSite);
-			if (datasitebykey) {
+			if (datasitebykey && !isValidating) {
 				setSelectedSiteMap(datasitebykey);
 			}
 		};
@@ -74,7 +74,10 @@ const Home = (): FunctionComponent => {
 					isLoading={isValidating}
 					selectedSite={selectedSiteMap}
 				/>
-				<MonitorBottomLeft />
+				<MonitorBottomLeft
+					isLoading={isValidating}
+					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
+				/>
 				<MonitorBottomRight />
 			</div>
 		</main>

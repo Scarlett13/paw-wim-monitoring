@@ -36,6 +36,7 @@ export function MyMap({
 						<Marker
 							key={marker.siteid}
 							width={30}
+							hover={true}
 							anchor={[marker.sitelat, marker.sitelong]}
 							color={marker.sitecolor}
 							onClick={() => {

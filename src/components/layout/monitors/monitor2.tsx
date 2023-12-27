@@ -45,7 +45,7 @@ const MonitorTopRight = ({
 					)}
 					color={getColorFromStatus(selectedSite.cpu.status)}
 					onoff={selectedSite.cpu.status === "OFF"}
-					textSuffix="%"
+					textSuffix={selectedSite.cpu.status === "OFF" ? "" : "%"}
 					textPrefix=""
 				/>
 
@@ -58,7 +58,7 @@ const MonitorTopRight = ({
 					)}
 					color={getColorFromStatus(selectedSite.memory.status)}
 					onoff={selectedSite.memory.status === "OFF"}
-					textSuffix="%"
+					textSuffix={selectedSite.memory.status === "OFF" ? "" : "%"}
 					textPrefix=""
 				/>
 
