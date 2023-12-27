@@ -51,9 +51,25 @@ const MonitorTopLeft = ({
 			{/* Monitor 1 */}
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
-				<div className="bg-neutral-600 w-full text-center col-span-1">logo</div>
-				<div className="bg-purple-600 w-full text-center col-span-2">title</div>
-				<div className=" bg-pink-600 w-full text-center col-span-1">logo</div>
+				<div className="w-full text-center col-span-1 border-r-2 border-gray-500">
+					<img
+						src="../public/Logo-GBU-2.svg"
+						alt="Logo-GBU-2"
+						className="ml-16 object-cover w-44 h-20"
+					/>
+				</div>
+				<div className="w-full text-center col-span-2">
+					<Typography variant="j1" className="mt-4">
+						WIM Monitoring
+					</Typography>
+				</div>
+				<div className="w-full text-center col-span-1 border-l-2 border-gray-500">
+					<img
+						src="../public/Logo-VGT-1.svg"
+						alt="Logo-VGT-1"
+						className="ml-16 object-cover w-44 h-20"
+					/>
+				</div>
 				{/* map */}
 				<div className="col-span-4 row-span-4 bg-slate-900 text-amber-50 text-center h-full">
 					<MyMap
