@@ -85,7 +85,7 @@ const MonitorTopRight = ({
 					)}
 					color={getColorFromStatus(selectedSite.disk.status)}
 					onoff={selectedSite.disk.status === "OFF"}
-					textSuffix="%"
+					textSuffix={selectedSite.disk.status === "OFF" ? "" : "%"}
 					textPrefix=""
 				/>
 
