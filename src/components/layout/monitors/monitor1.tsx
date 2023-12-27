@@ -43,11 +43,11 @@ const MonitorTopLeft = ({
 			{/* Monitor 1 */}
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
-				<div className="w-full text-center col-span-1 border-r-2 border-gray-500">
+				<div className="w-full col-span-1 border-r-2 border-gray-300">
 					<img
 						src="../public/Logo-GBU-2.svg"
 						alt="Logo-GBU-2"
-						className="ml-16 object-cover w-44 h-20"
+						className="object-cover w-40 h-20"
 					/>
 				</div>
 				<div className="w-full text-center col-span-2">
