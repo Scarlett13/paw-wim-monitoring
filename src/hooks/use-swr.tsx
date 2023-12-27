@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 export function useSiteStatus() {
 	const fetcher = () =>
-		fetch("http://localhost:3010/v1/wim-status", {
+		fetch("http://192.168.10.230:3010/v1/wim-status", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
