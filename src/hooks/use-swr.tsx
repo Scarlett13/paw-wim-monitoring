@@ -2,6 +2,7 @@ import useSWR from "swr";
 
 export function useSiteStatus() {
 	const fetcher = () =>
+		//pake proxy biar gak ke block cors
 		fetch("/api/v1/wim-status", {
 			method: "GET",
 			headers: {
