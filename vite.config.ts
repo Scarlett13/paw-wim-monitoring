@@ -36,8 +36,14 @@ export default defineConfig({
 		react(),
 	],
 	server: {
-		host: true,
-		strictPort: true,
+		proxy: {
+			"/api": {
+				target: "http://localhost:3010",
+				changeOrigin: true,
+				secure: false,
+				rewrite: (path) => path.replace(/^\/api/, ""),
+			},
+		},
 	},
 	test: {
 		environment: "jsdom",
