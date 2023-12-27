@@ -17,7 +17,10 @@ export default function TableCard({
 		<div
 			className={clsxm(
 				"bg-background shadow-sm",
-				[size === "sm" && ["p-4"], size === "base" && ["p-5"]],
+				[
+					size === "sm" && ["p-4", "rounded-lg"],
+					size === "base" && ["p-5", "rounded-xl"],
+				],
 				className
 			)}
 			{...rest}
