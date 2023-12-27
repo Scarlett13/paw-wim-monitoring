@@ -3,15 +3,49 @@ import { StatusCard } from "../../cards";
 import Typography from "../../ui/default-typography";
 import { MyMap } from "../../ui/default-map";
 
-import { MapMarker, dummyMarker } from "../../../types/map-marker";
+import { dummyMarker } from "../../../types/map-marker";
+// import logger from "../../../libs/logger";
+import { countStatus, mergeObjectsArray } from "../../../utils/arrayUtils";
+import { useEffect, useState } from "react";
+import { IWimStatusResponse } from "@/src/types/response";
+// import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {
-	selectedSiteMapHook: React.Dispatch<React.SetStateAction<MapMarker | null>>;
+	selectedSiteMapHook: React.Dispatch<
+		React.SetStateAction<IWimStatusResponse | null>
+	>;
+	listSiteData: any[];
 }
 
 const MonitorTopLeft = ({
 	selectedSiteMapHook,
+	listSiteData,
 }: MonitorTopLeftProps): FunctionComponent => {
+	const [mergedSite, setMergedSite] = useState<any[] | null>(null);
+	const [countOk, setCountOk] = useState<number | string>(0);
+	const [countWarning, setCountWarning] = useState<number | string>(0);
+	const [countOff, setCountOff] = useState<number | string>(0);
+
+	useEffect(() => {
+		const tempMergedSite = mergeObjectsArray(dummyMarker, listSiteData);
+
+		if (tempMergedSite) {
+			setCountOff(countStatus(tempMergedSite, "red"));
+			setCountOk(countStatus(tempMergedSite, "green"));
+			setCountWarning(countStatus(tempMergedSite, "orange"));
+		} else {
+			setCountOff("error");
+			setCountOk("error");
+			setCountWarning("error");
+		}
+
+		setMergedSite(tempMergedSite);
+	}, [dummyMarker, listSiteData]);
+
+	if (!mergedSite) {
+		return <></>;
+	}
+
 	return (
 		<>
 			{/* Monitor 1 */}
@@ -23,7 +57,7 @@ const MonitorTopLeft = ({
 				{/* map */}
 				<div className="col-span-4 row-span-4 bg-slate-900 text-amber-50 text-center h-full">
 					<MyMap
-						markers={dummyMarker}
+						markers={mergedSite}
 						selectedSiteMapHook={selectedSiteMapHook}
 					/>
 				</div>
@@ -38,7 +72,7 @@ const MonitorTopLeft = ({
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
 							<Typography variant="j1" className="text-center text-7xl">
-								15
+								{countOk}
 							</Typography>
 						</div>
 					</StatusCard>
@@ -54,7 +88,7 @@ const MonitorTopLeft = ({
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
 							<Typography variant="j1" className="text-center text-7xl">
-								0
+								{countWarning}
 							</Typography>
 						</div>
 					</StatusCard>
@@ -70,7 +104,7 @@ const MonitorTopLeft = ({
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
 							<Typography variant="j1" className="text-center text-7xl">
-								0
+								{countOff}
 							</Typography>
 						</div>
 					</StatusCard>
