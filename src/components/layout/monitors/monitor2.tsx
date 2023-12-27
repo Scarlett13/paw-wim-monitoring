@@ -1,11 +1,12 @@
 import type { FunctionComponent } from "@/src/common/types";
 import GaugeMeter from "../../charts/gauge/gauge-meter";
 import Typography from "../../ui/default-typography";
-import { MapMarker } from "@/src/types/map-marker";
+// import { MapMarker } from "@/src/types/map-marker";
 import { MonitorEmptyState } from "./monitor-empty-state";
+import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopRightProps {
-	selectedSite: MapMarker | null;
+	selectedSite: IWimStatusResponse | null;
 }
 
 const MonitorTopRight = ({
