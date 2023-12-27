@@ -1,9 +1,19 @@
 import type { FunctionComponent } from "@/src/common/types";
-import GaugeMeter from "../../charts/gauge/gauge-meter";
+// import GaugeMeter from "../../charts/gauge/gauge-meter";
 import Typography from "../../ui/default-typography";
 // import { MapMarker } from "@/src/types/map-marker";
 import { MonitorEmptyState } from "./monitor-empty-state";
 import { IWimStatusResponse } from "@/src/types/response";
+import { GaugeLayout } from "..";
+import {
+	getColorFromStatus,
+	getTypographyColorFromStatus,
+} from "../../utils/colorPickerUtils";
+import { formatNumberWithTwoDecimals } from "../../utils/numberUtils";
+import { getNerworkBytes } from "../../../utils/bytesUtils";
+import OnOffStatusLayout from "../on-off-status";
+
+// import logger from "../../../libs/logger";
 
 interface MonitorTopRightProps {
 	selectedSite: IWimStatusResponse | null;
@@ -12,6 +22,8 @@ interface MonitorTopRightProps {
 const MonitorTopRight = ({
 	selectedSite,
 }: MonitorTopRightProps): FunctionComponent => {
+	const network = getNerworkBytes(selectedSite?.network.download || "-");
+
 	return selectedSite ? (
 		<>
 			{/* monitor 2 - todo: sesuaikan rows nya, ini dibikin 7 biar bagus waktu di color-coded*/}
@@ -22,48 +34,79 @@ const MonitorTopRight = ({
 						Site {selectedSite.sitename}
 					</Typography>
 				</div>
-				{/* disk gauge */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					<Typography variant="j1">CPU</Typography>
-					<GaugeMeter />
-				</div>
-				{/* cpu gauge */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					<Typography variant="j1">Disk</Typography>
-					<GaugeMeter />
-				</div>
-				{/* memory gauge */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					<Typography variant="j1">Memory</Typography>
-					<GaugeMeter />
-				</div>
-				{/* orbit gauge */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					<Typography variant="j1">Network</Typography>
-					<GaugeMeter />
-				</div>
-				{/* text sensor */}
-				{/* <div className="bg-red-300 col-span-4 w-full h-full"> Sensor</div> */}
-				{/* loop status */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					{/* <Typography variant="j1">Loop</Typography>
-					<GaugeMeter /> */}
-				</div>
-				{/* wim lane 1 status */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					<Typography variant="j1">Wim Logic</Typography>
-					<GaugeMeter />
-				</div>
-				{/* wim lane 2 status */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					<Typography variant="j1">CCTV</Typography>
-					<GaugeMeter />
-				</div>
-				{/* orbit ping */}
-				<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-					{/* <Typography variant="j1">Orbit</Typography>
-					<GaugeMeter /> */}
-				</div>
+
+				{/* CPU */}
+				<GaugeLayout
+					title="CPU"
+					value={formatNumberWithTwoDecimals(
+						selectedSite.cpu.processor_usage as number
+					)}
+					color={getColorFromStatus(selectedSite.cpu.status)}
+					onoff={selectedSite.cpu.status === "OFF"}
+					textSuffix="%"
+					textPrefix=""
+				/>
+
+				{/* Memory */}
+				<GaugeLayout
+					title="MEMORY"
+					value={formatNumberWithTwoDecimals(
+						selectedSite.memory.usage_percent as number
+					)}
+					color={getColorFromStatus(selectedSite.memory.status)}
+					onoff={selectedSite.memory.status === "OFF"}
+					textSuffix="%"
+					textPrefix=""
+				/>
+
+				{/* Disk */}
+				<GaugeLayout
+					title={`Disk Usage`}
+					value={formatNumberWithTwoDecimals(
+						selectedSite.disk.usage_percent as number
+					)}
+					color={getColorFromStatus(selectedSite.disk.status)}
+					onoff={selectedSite.disk.status === "OFF"}
+					textSuffix="%"
+					textPrefix=""
+				/>
+
+				{/* Network */}
+				<GaugeLayout
+					title="Network"
+					value={formatNumberWithTwoDecimals(network.value)}
+					color={getColorFromStatus(selectedSite.network.status)}
+					onoff={selectedSite.network.status === "OFF"}
+					textSuffix={network.unit || ""}
+					textPrefix=""
+				/>
+
+				<OnOffStatusLayout
+					title="Wim Logic Ping"
+					value={selectedSite.ping.wim_logic.status}
+					color={getTypographyColorFromStatus(
+						selectedSite.ping.wim_logic.status
+					)}
+				/>
+				<OnOffStatusLayout
+					title="Camera Ping"
+					value={selectedSite.ping.camera.status}
+					color={getTypographyColorFromStatus(selectedSite.ping.camera.status)}
+				/>
+				<OnOffStatusLayout
+					title="Wim App"
+					value={selectedSite.app_process.wim_app.status}
+					color={getTypographyColorFromStatus(
+						selectedSite.app_process.wim_app.status
+					)}
+				/>
+				<OnOffStatusLayout
+					title="VPN App"
+					value={selectedSite.app_process.vpn_app.status}
+					color={getTypographyColorFromStatus(
+						selectedSite.app_process.vpn_app.status
+					)}
+				/>
 			</div>
 		</>
 	) : (

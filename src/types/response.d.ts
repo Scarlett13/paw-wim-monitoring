@@ -20,33 +20,33 @@ export interface IWimStatusResponse {
 
 export interface IPingStatusResponse {
 	status: string;
-	average_response_ms: string;
-	percent_packet_loss: string;
+	average_response_ms: number | string;
+	percent_packet_loss: number | string;
 }
 
 export interface IAppProcessResponse {
 	status: string;
-	percent_user_time: string;
+	percent_user_time: number | string;
 }
 
 export interface ICpuProcessResponse {
 	status: string;
-	processor_usage: string;
+	processor_usage: number | string;
 }
 
 export interface IMemoryProcessResponse {
 	status: string;
-	usage_percent: string;
+	usage_percent: number | string;
 }
 
 export interface INetworkProcessResponse {
 	status: string;
-	upload: string;
-	download: string;
+	upload: number | string;
+	download: number | string;
 }
 
 export interface IDiskProcessResponse {
 	status: string;
 	instance: string;
-	free_spaces: string | number;
+	usage_percent: string | number;
 }

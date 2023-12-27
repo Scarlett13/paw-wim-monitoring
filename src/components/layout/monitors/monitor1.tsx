@@ -5,7 +5,11 @@ import { MyMap } from "../../ui/default-map";
 
 import { dummyMarker } from "../../../types/map-marker";
 // import logger from "../../../libs/logger";
-import { countStatus, mergeObjectsArray } from "../../../utils/arrayUtils";
+import {
+	countStatus,
+	findSiteObjectFromId,
+	mergeObjectsArray,
+} from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 // import { IWimStatusResponse } from "@/src/types/response";
@@ -14,11 +18,13 @@ interface MonitorTopLeftProps {
 	selectedSiteMapHook: React.Dispatch<
 		React.SetStateAction<IWimStatusResponse | null>
 	>;
+	currentSelectedSite: IWimStatusResponse | null;
 	listSiteData: any[];
 }
 
 const MonitorTopLeft = ({
 	selectedSiteMapHook,
+	currentSelectedSite,
 	listSiteData,
 }: MonitorTopLeftProps): FunctionComponent => {
 	const [mergedSite, setMergedSite] = useState<any[] | null>(null);
@@ -41,6 +47,17 @@ const MonitorTopLeft = ({
 
 		setMergedSite(tempMergedSite);
 	}, [dummyMarker, listSiteData]);
+
+	useEffect(() => {
+		if (currentSelectedSite) {
+			const currentsite = findSiteObjectFromId(
+				currentSelectedSite.siteid,
+				mergedSite as IWimStatusResponse[]
+			);
+
+			selectedSiteMapHook(currentsite || null);
+		}
+	}, [mergedSite]);
 
 	if (!mergedSite) {
 		return <></>;
