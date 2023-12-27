@@ -3,6 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./styles/tailwind.css";
 
+declare namespace NodeJS {
+	interface ProcessEnv {
+		readonly NODE_ENV: string;
+	}
+}
+
 const rootElement = document.querySelector("#root") as Element;
 if (!rootElement.innerHTML) {
 	const root = ReactDOM.createRoot(rootElement);
