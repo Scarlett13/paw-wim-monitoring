@@ -3,6 +3,8 @@ module.exports = {
 		{
 			name: `wim-app-monitoring`,
 			script: "serve",
+			exec_mode: "cluster",
+			instances: "max",
 			env: {
 				PM2_SERVE_PATH: "./dist",
 				PM2_SERVE_PORT: 5173,
