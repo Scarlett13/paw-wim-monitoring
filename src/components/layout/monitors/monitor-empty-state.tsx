@@ -6,7 +6,7 @@ export const MonitorEmptyState = () => {
 			{/* title */}
 			<div className="col-span-4">
 				<Typography variant="j1" className="text-center text-5xl py-5">
-					Select your site from the map first
+					Select site or press shortcut
 				</Typography>
 			</div>
 			{/* disk gauge */}
