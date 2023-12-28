@@ -16,6 +16,17 @@ export interface IWimStatusResponse {
 	memory: IMemoryProcessResponse;
 	network: INetworkProcessResponse;
 	disk: IDiskProcessResponse;
+	orbit_data: IOrbitMonitoringResponse;
+}
+
+export interface IOrbitMonitoringResponse {
+	quota_status: string;
+	end_time_status: string;
+	siteid: string;
+	msisdn: string;
+	quota_value: number | string;
+	quota_limit: number | string;
+	end_time: string;
 }
 
 export interface IPingStatusResponse {

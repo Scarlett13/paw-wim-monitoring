@@ -1,11 +1,18 @@
 import { IWimStatusResponse } from "../../../../../types/response";
 import { GaugeLayout } from "../../..";
-import { getColorFromStatus } from "../../../../utils/colorPickerUtils";
+import {
+	getColorFromStatus,
+	getTypographyColorFromStatus,
+} from "../../../../utils/colorPickerUtils";
 import { formatNumberWithTwoDecimals } from "../../../../utils/numberUtils";
-import { getNerworkBytes } from "../../../../../utils/bytesUtils";
+// import { getNerworkBytes } from "../../../../../utils/bytesUtils";
 // import NetworkGaugeMeter from "../../charts/gauge/network-gauge";
 import NetworkGaugeLayout from "../../../network-gauge";
-import { FunctionComponent } from "@/src/common/types";
+import { FunctionComponent } from "../../../../../common/types";
+import {
+	calculateDaysDifference,
+	createCustomTimeZoneDate,
+} from "../../../../../utils/dateUtils";
 
 interface IMonitorTopRightGaugeItems {
 	isLoading: boolean;
@@ -16,20 +23,17 @@ const MonitorTopRightGaugeItems = ({
 	selectedSite,
 	isLoading,
 }: IMonitorTopRightGaugeItems): FunctionComponent => {
-	const network = getNerworkBytes(selectedSite?.network.download || "-");
+	const quotavalue =
+		(selectedSite.orbit_data.quota_value as number) / 1024 / 1024 || 0;
 
-	const calculateScale = (dataSize: number) => {
-		if (dataSize <= 1024) {
-			return { min: 0, max: 1024, unit: "KB" }; // Scale for data sizes up to 1 KB
-		} else if (dataSize <= 1024 * 1024) {
-			return { min: 0, max: 1024, unit: "MB" }; // Scale for data sizes up to 1 MB
-		} else {
-			return { min: 0, max: dataSize, unit: "MB" }; // Scale for larger data sizes
-		}
-	};
+	const quotalimit =
+		(selectedSite.orbit_data.quota_limit as number) / 1024 / 1024 || 0;
 
-	const initialScale = calculateScale(
-		(selectedSite?.network.download as number) || 0
+	const datenow = createCustomTimeZoneDate("Asia/Bangkok");
+	// console.log(datenow.toISO());
+	const daydiff = calculateDaysDifference(
+		new Date(selectedSite.orbit_data.end_time),
+		new Date(datenow.toISO() ?? "")
 	);
 	return (
 		<>
@@ -76,15 +80,19 @@ const MonitorTopRightGaugeItems = ({
 			<NetworkGaugeLayout
 				isLoading={isLoading}
 				title="Orbit"
-				value={formatNumberWithTwoDecimals(network.value)}
-				slidercolor={getColorFromStatus(selectedSite.network.status)}
-				textcolor="danger"
-				quotaday="99 hari"
+				value={formatNumberWithTwoDecimals(quotavalue || "OFF")}
+				slidercolor={getColorFromStatus(
+					selectedSite.orbit_data.quota_status || "OFF"
+				)}
+				textcolor={getTypographyColorFromStatus(
+					selectedSite.orbit_data.end_time_status || "OFF"
+				)}
+				quotaday={`${daydiff} Hari`}
 				onoff={selectedSite.network.status === "OFF"}
-				textSuffix={network.unit || ""}
+				textSuffix={"GB"}
 				textPrefix=""
-				min={initialScale.min}
-				max={initialScale.max}
+				min={0}
+				max={quotalimit}
 			/>
 		</>
 	);
