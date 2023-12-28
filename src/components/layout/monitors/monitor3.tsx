@@ -17,72 +17,57 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					</SimpleCard>
 				</div>
 				{/* table */}
-				<div className="row-span-1 text-center m-2">
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
-						test
+				<div className="row-span-1 text-center m-1">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-16 ml-2 shadow-md">
+						Site 1
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-2 shadow-md">
+						Site 2
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-2 shadow-md">
+						Site 3
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
-					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-36 shadow-md">
+						Site 4
 					</TableCard>
 				</div>
-				<div className="row-span-1 text-center m-2">
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
-						test
+				<div className="row-span-1 text-center m-1">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-16 ml-1 shadow-md">
+						Site 5
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
+						site 6
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
+						site 7
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
-					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-36 shadow-md">
+						site 8
 					</TableCard>
 				</div>
-				<div className="row-span-1 text-center m-2">
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
-						test
+				<div className="row-span-1 text-center m-1">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-16 ml-1 shadow-md">
+						Site 9
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
+						site 10
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
+						Site 11
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
-					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-36 shadow-md">
+						Site 12
 					</TableCard>
 				</div>
-				<div className="row-span-1 text-center m-2">
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
-						test
+				<div className="row-span-1 text-center m-1">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-16 ml-2 shadow-md">
+						Site 13
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-2 shadow-md">
+						Site 14
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
-					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
-					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
-						test
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-2 shadow-md">
+						Site 15
 					</TableCard>
 				</div>
 			</div>
