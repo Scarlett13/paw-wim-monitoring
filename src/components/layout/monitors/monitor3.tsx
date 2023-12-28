@@ -1,5 +1,4 @@
 import type { FunctionComponent } from "@/src/common/types";
-import Table from "../../table/table-monitor3";
 import Typography from "../../ui/default-typography";
 import { SimpleCard } from "../../cards";
 import TableCard from "../../cards/table-card";
@@ -22,7 +21,16 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
 						test
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
 						test
 					</TableCard>
 				</div>
@@ -30,7 +38,16 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
 						test
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
 						test
 					</TableCard>
 				</div>
@@ -38,7 +55,16 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
 						test
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
+						test
+					</TableCard>
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
 						test
 					</TableCard>
 				</div>
@@ -46,13 +72,13 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
 						test
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
 						test
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
 						test
 					</TableCard>
-					<TableCard className="w-full h-full border-2 border-black mt-8 ml-0">
+					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
 						test
 					</TableCard>
 					<TableCard className="w-full h-full border-2 border-black mt-5 ml-0">
