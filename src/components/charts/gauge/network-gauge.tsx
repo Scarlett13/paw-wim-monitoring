@@ -3,32 +3,36 @@ import { RoundSlider, ISettingsPointer } from "mz-react-round-slider";
 import Typography from "../../ui/default-typography";
 
 interface IGaugeMeter {
-	valuegg: number | string;
+	value: number | string;
 	textSuffix: string;
 	textPrefix: string;
-	color: string;
+	slidercolor: string;
+	quotaday: string;
+	textcolor: "danger" | "custom_warning" | "custom_success";
 	onoff: boolean;
 	min?: number;
 	max?: number;
 }
 
-const GaugeMeter = ({
-	valuegg,
+const NetworkGaugeMeter = ({
+	value,
 	textSuffix,
 	textPrefix,
-	color,
+	slidercolor,
+	textcolor,
 	onoff,
 	min = 0,
 	max = 100,
+	quotaday = "OFF",
 }: IGaugeMeter) => {
 	const [pointers, setPointers] = useState<ISettingsPointer[]>([
-		{ value: valuegg },
+		{ value: value },
 	]);
 
-	if (pointers[0]?.value !== valuegg) {
+	if (pointers[0]?.value !== value) {
 		setPointers([
 			{
-				value: valuegg,
+				value: value,
 			},
 		]);
 	}
@@ -67,9 +71,9 @@ const GaugeMeter = ({
 				pathThickness={5}
 				pathInnerBgColor={"url(#color-slider-gradient)"}
 				pathInnerBgFull={true}
-				connectionBgColor={color}
-				pointerBgColor={color}
-				pointerBgColorSelected={color}
+				connectionBgColor={slidercolor}
+				pointerBgColor={slidercolor}
+				pointerBgColorSelected={slidercolor}
 				pointerRadius={20}
 				enableTicks={true}
 				ticksCount={10}
@@ -78,30 +82,30 @@ const GaugeMeter = ({
 				tickValuesPrefix={" "}
 				tickValuesSuffix={"%"}
 				tickValuesDistance={20}
-				tickValuesColor={color}
-				textColor={color}
-				textFontSize={46}
+				tickValuesColor={slidercolor}
+				textColor={slidercolor}
+				textFontSize={40}
 				textSuffix={textSuffix}
 				textPrefix={textPrefix}
 				showTickValues={false}
-				pointerBgColorDisabled={color}
-				connectionBgColorDisabled={color}
+				pointerBgColorDisabled={slidercolor}
+				connectionBgColorDisabled={slidercolor}
 				disabled={true}
 				min={min}
 				max={max}
 				pathRadius={115}
 			/>
-			<div className="border-t border-gray-200 z-40 -mt-10">
+			<div className=" z-40 -mt-10">
 				<Typography
-					variant="h1"
-					color={"primary"}
+					variant="j2"
+					color={textcolor}
 					className="border-t border-gray-200 z-40 -mt-20"
 				>
-					{""}
+					{quotaday}
 				</Typography>
 			</div>
 		</div>
 	);
 };
 
-export default GaugeMeter;
+export default NetworkGaugeMeter;

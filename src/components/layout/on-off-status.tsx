@@ -1,11 +1,13 @@
+import clsxm from "../../libs/clsxm";
 import Skeleton from "../ui/default-skeleton";
 import Typography from "../ui/default-typography";
 
 interface IOnOffStatusLayout {
 	title: string;
 	value: number | string;
-	color: "danger" | "custom_success" | "custom_warning";
+	color: "danger" | "custom_success" | "custom_warning" | "primary";
 	isLoading: boolean;
+	className?: string;
 }
 
 export default function OnOffStatusLayout({
@@ -13,11 +15,19 @@ export default function OnOffStatusLayout({
 	value = "OFF",
 	color,
 	isLoading,
+	className,
 }: IOnOffStatusLayout) {
 	console.log(color);
 	return (
-		<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
-			<Typography variant="j1">{title}</Typography>
+		<div
+			className={clsxm(
+				"row-span-2 col-span-1 bg-white h-full w-full flex flex-col items-center justify-center",
+				className
+			)}
+		>
+			<Typography variant="j1" className="z-40">
+				{title}
+			</Typography>
 			<Typography variant="j2" color={color}>
 				{isLoading ? (
 					<Skeleton className="h-full w-full" />
