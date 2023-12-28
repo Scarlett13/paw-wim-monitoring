@@ -8,7 +8,7 @@ const MonitorBottomRight = (): FunctionComponent => {
 			{/* monitor 4 */}
 			<div className="grid grid-cols-4 grid-rows-7 bottom-right h-screen w-screen 4xl:h-full 4xl:w-full">
 				<div className="row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
 						{/* <Typography variant="h3" className="">
 							site 1
 						</Typography> */}
@@ -43,7 +43,7 @@ const MonitorBottomRight = (): FunctionComponent => {
 					</SimpleCard>
 				</div>
 				<div className="row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
 						<img
 							src="../public/apple-touch-icon.png"
 							alt="apple-touch-icon"
@@ -73,7 +73,7 @@ const MonitorBottomRight = (): FunctionComponent => {
 					</SimpleCard>
 				</div>
 				<div className="row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
 						<img
 							src="../public/apple-touch-icon.png"
 							alt="apple-touch-icon"
@@ -103,7 +103,7 @@ const MonitorBottomRight = (): FunctionComponent => {
 					</SimpleCard>
 				</div>
 				<div className="col-span-1 row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
 						<img
 							src="../public/apple-touch-icon.png"
 							alt="apple-touch-icon"
