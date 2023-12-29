@@ -22,7 +22,7 @@ export default function GaugeLayout({
 	isLoading,
 }: IGaugeLayout) {
 	return (
-		<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center mt-3">
+		<div className="row-span-3 border-l-4 bg-white shadow-md h-full w-full flex flex-col items-center justify-center mt-8">
 			<Typography variant="j1">{title}</Typography>
 			{isLoading ? (
 				<Skeleton className="h-full w-full" />

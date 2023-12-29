@@ -16,7 +16,7 @@ export default function OnOffStatusLayout({
 }: IOnOffStatusLayout) {
 	console.log(color);
 	return (
-		<div className="row-span-3 bg-white shadow-md h-full w-full flex flex-col items-center justify-center">
+		<div className="row-span-3 bg-white border-l-4 mt-2 shadow-md h-full w-full flex flex-col items-center justify-center">
 			<Typography variant="j1">{title}</Typography>
 			<Typography variant="j2" color={color}>
 				{isLoading ? (
