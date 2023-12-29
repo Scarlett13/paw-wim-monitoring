@@ -5,7 +5,7 @@ import {
 	getTypographyColorFromStatus,
 } from "../../../../utils/colorPickerUtils";
 import { formatNumberWithTwoDecimals } from "../../../../utils/numberUtils";
-// import { getNerworkBytes } from "../../../../../utils/bytesUtils";
+import { getNerworkBytes } from "../../../../../utils/bytesUtils";
 // import NetworkGaugeMeter from "../../charts/gauge/network-gauge";
 import NetworkGaugeLayout from "../../../network-gauge";
 import { FunctionComponent } from "../../../../../common/types";
@@ -23,18 +23,25 @@ const MonitorTopRightGaugeItems = ({
 	selectedSite,
 	isLoading,
 }: IMonitorTopRightGaugeItems): FunctionComponent => {
-	const quotavalue =
-		(selectedSite.orbit_data.quota_value as number) / 1024 / 1024 || 0;
-
-	const quotalimit =
-		(selectedSite.orbit_data.quota_limit as number) / 1024 / 1024 || 0;
+	let daydiff: number | string = "";
+	const quota_value = getNerworkBytes(
+		selectedSite.orbit_data?.quota_value || "-"
+	);
+	const quota_limit = getNerworkBytes(
+		selectedSite.orbit_data?.quota_limit || "-"
+	);
 
 	const datenow = createCustomTimeZoneDate("Asia/Bangkok");
 	// console.log(datenow.toISO());
-	const daydiff = calculateDaysDifference(
-		new Date(selectedSite.orbit_data.end_time),
-		new Date(datenow.toISO() ?? "")
-	);
+	if (selectedSite?.orbit_data?.end_time) {
+		daydiff = calculateDaysDifference(
+			new Date(selectedSite.orbit_data.end_time),
+			new Date(datenow.toISO() ?? "")
+		);
+	} else {
+		daydiff = "-";
+	}
+
 	return (
 		<>
 			{/* CPU */}
@@ -80,19 +87,22 @@ const MonitorTopRightGaugeItems = ({
 			<NetworkGaugeLayout
 				isLoading={isLoading}
 				title="Orbit"
-				value={formatNumberWithTwoDecimals(quotavalue || "OFF")}
+				value={formatNumberWithTwoDecimals(quota_value.value || "OFF")}
 				slidercolor={getColorFromStatus(
-					selectedSite.orbit_data.quota_status || "OFF"
+					selectedSite?.orbit_data?.quota_status || "OFF"
 				)}
 				textcolor={getTypographyColorFromStatus(
-					selectedSite.orbit_data.end_time_status || "OFF"
+					selectedSite?.orbit_data?.end_time_status || "OFF"
 				)}
 				quotaday={`${daydiff} Hari`}
-				onoff={selectedSite.network.status === "OFF"}
-				textSuffix={"GB"}
+				onoff={
+					selectedSite.orbit_data.quota_status === "OFF" ||
+					selectedSite.orbit_data.end_time_status === "ERROR"
+				}
+				textSuffix={selectedSite?.orbit_data?.end_time_status ? "GB" : ""}
 				textPrefix=""
 				min={0}
-				max={quotalimit}
+				max={(quota_limit.value as number) || 100}
 			/>
 		</>
 	);
