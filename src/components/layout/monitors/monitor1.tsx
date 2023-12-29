@@ -7,7 +7,7 @@ import { countStatus } from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
-import logoGBU from "../../../../public/Logo-GBU-1.svg";
+import logoGBU from "../../../../public/Logo-GBU-2.svg";
 import logoVGT from "../../../../public/Logo-VGT-1.svg";
 // import { IWimStatusResponse } from "@/src/types/response";
 
