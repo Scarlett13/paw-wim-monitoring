@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
 import logoGBU from "../../../../public/Logo-GBU-2.svg";
-import logoVGT from "../../../../public/Logo-VGT-1.svg";
+import logoVGT from "../../../../public/visi_baru.svg";
 // import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {
