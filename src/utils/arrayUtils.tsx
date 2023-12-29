@@ -97,6 +97,15 @@ export function mergeObjectsArray(
 					instance: "-",
 					usage_percent: "-",
 				},
+				orbit_data: {
+					quota_status: "OFF",
+					end_time_status: "OFF",
+					siteid: "-",
+					msisdn: "-",
+					quota_value: "-",
+					quota_limit: "-",
+					end_time: "-",
+				},
 			};
 			mergedArray.push(newObj2);
 		}
