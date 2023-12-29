@@ -58,7 +58,7 @@ const Home = (): FunctionComponent => {
 				mergedSite as IWimStatusResponse[]
 			);
 
-			setSelectedSiteMap(currentsite || null);
+			setSelectedSiteMap(currentsite || mergedSite[0]);
 		}
 	}, [mergedSite]);
 
