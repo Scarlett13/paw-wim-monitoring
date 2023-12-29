@@ -52,7 +52,7 @@ const MonitorTopLeft = ({
 						className="object-cover ml-10 w-60 h-20"
 					/>
 				</div>
-				<div className="w-full text-center col-span-2">
+				<div className="w-full text-center col-span-2 mt-4">
 					<Typography variant="j1" className="mt-4">
 						WIM Monitoring
 					</Typography>
