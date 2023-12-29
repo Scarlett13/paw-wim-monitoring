@@ -27,7 +27,7 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-2 shadow-md">
 						Site 3
 					</TableCard>
-					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-36 shadow-md">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
 						Site 4
 					</TableCard>
 				</div>
@@ -41,7 +41,7 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
 						site 7
 					</TableCard>
-					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-36 shadow-md">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
 						site 8
 					</TableCard>
 				</div>
@@ -55,7 +55,7 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
 						Site 11
 					</TableCard>
-					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-36 shadow-md">
+					<TableCard className="w-72 h-full border-2 border-gray-400 mt-5 ml-1 shadow-md">
 						Site 12
 					</TableCard>
 				</div>

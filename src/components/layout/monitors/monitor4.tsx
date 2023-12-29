@@ -7,123 +7,125 @@ const MonitorBottomRight = (): FunctionComponent => {
 		<>
 			{/* monitor 4 */}
 			<div className="grid grid-cols-4 grid-rows-7 bottom-right h-screen w-screen 4xl:h-full 4xl:w-full">
-				<div className="row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
-						{/* <Typography variant="h3" className="">
-							site 1
-						</Typography> */}
-						<div className="h-full w-full">
-							<img
-								src="../public/apple-touch-icon.png"
-								alt="apple-touch-icon"
-								className="h-24 ml-20 mb-2"
-							/>
-						</div>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
-						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
-						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
-						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
-						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-36">
-						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
-						/>
+				<div className="col-span-4 mt-4 text-center">
+					<SimpleCard className="shadow-lg border-solid border-4 border-slate-400">
+						<Typography variant="j2" className="font-bold">
+							CCTV CAPTURE
+						</Typography>
 					</SimpleCard>
 				</div>
-				<div className="row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
+				<div className="row-span-1">
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-1.jpeg"
+							alt="caputer-car-1.jpeg"
+							className="h-28 w-auto mt-5 border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-2.jpg"
+							alt="capture-car-2.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-3.jpg"
+							alt="capture-car-3.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-36">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-4.jpg"
+							alt="capture-car-4.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
+					</div>
 				</div>
-				<div className="row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
+				<div className="row-span-1">
+					<div className="flex w-full items-center justify-center mt-3">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-5.jpg"
+							alt="capture-car-5.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-6.jpg"
+							alt="capture-car-6.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-7.jpg"
+							alt="capture-car-7.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-36">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-8.jpg"
+							alt="capture-car-8.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
+					</div>
 				</div>
-				<div className="col-span-1 row-span-2 text-center">
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-4 ml-3">
+				<div className="row-span-1">
+					<div className="flex w-full items-center justify-center mt-3">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-9.jpg"
+							alt="capture-car-9.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-10.jpg"
+							alt="capture-car-10.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
-					<SimpleCard className="w-72 h-32 border-2 border-gray-400 shadow-md mt-3 ml-3">
+					</div>
+					<div className="flex w-full items-center justify-center">
 						<img
-							src="../public/apple-touch-icon.png"
-							alt="apple-touch-icon"
-							className="h-24 ml-20 mb-2"
+							src="capture-car-11.jpg"
+							alt="capture-car-11.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
 						/>
-					</SimpleCard>
+					</div>
+					<div className="flex w-full items-center justify-center">
+						<img
+							src="capture-car-12.jpg"
+							alt="capture-car-12.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
+						/>
+					</div>
+				</div>
+				<div className="row-span-1">
+					<div className="flex w-full items-center justify-center mt-3">
+						<img
+							src="capture-car-13.jpg"
+							alt="capture-car-13.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
+						/>
+					</div>
+					<div className="flex w-full items-center justify-center">
+						<img
+							src="capture-car-14.jpg"
+							alt="capture-car-14.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
+						/>
+					</div>
+					<div className="flex w-full items-center justify-center">
+						<img
+							src="capture-car-15.jpg"
+							alt="capture-car-15.jpg"
+							className="h-28 w-auto mt-3  border-2 border-gray-400 shadow-md"
+						/>
+					</div>
 				</div>
 			</div>
 		</>
