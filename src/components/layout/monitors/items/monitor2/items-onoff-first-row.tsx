@@ -17,7 +17,7 @@ const MonitorTopRightOnOffFirstRowItems = ({
 			{/* Wim Logic */}
 			<OnOffStatusLayout
 				isLoading={isLoading}
-				title="Wim Logic Ping"
+				title="Wim Logic"
 				className="-mt-10 -mb-6"
 				value={selectedSite.ping.wim_logic.status}
 				color={getTypographyColorFromStatus(selectedSite.ping.wim_logic.status)}
@@ -26,7 +26,7 @@ const MonitorTopRightOnOffFirstRowItems = ({
 			{/* Camera */}
 			<OnOffStatusLayout
 				isLoading={isLoading}
-				title="Camera Ping"
+				title="Camera"
 				className="-mt-10 -mb-6"
 				value={selectedSite.ping.camera.status}
 				color={getTypographyColorFromStatus(selectedSite.ping.camera.status)}
