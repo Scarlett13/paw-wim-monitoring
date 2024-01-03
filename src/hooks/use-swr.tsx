@@ -45,6 +45,8 @@ export function useSiteImage() {
 		{
 			refreshInterval: 300000, //300 seconds
 			revalidateOnFocus: false,
+			revalidateIfStale: false,
+			revalidateOnReconnect: false,
 		}
 	);
 

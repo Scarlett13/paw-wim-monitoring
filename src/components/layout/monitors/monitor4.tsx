@@ -50,7 +50,7 @@ const MonitorBottomRight = (): FunctionComponent => {
 							listAllSiteImage.map((site: any) => {
 								return (
 									<div
-										key={site.siteid}
+										key={site.siteId}
 										className="flex flex-col w-full items-center justify-center"
 									>
 										<img
@@ -62,7 +62,7 @@ const MonitorBottomRight = (): FunctionComponent => {
 											alt="site.jpeg"
 											className="h-auto w-auto mt-5 border-2 border-gray-400 shadow-md"
 										/>
-										<p>{site.sitename}</p>
+										<p className="text-xl font-bold">{site.siteName}</p>
 									</div>
 								);
 							})}
