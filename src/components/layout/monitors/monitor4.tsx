@@ -5,27 +5,16 @@ import { useSiteImage } from "../../../hooks/use-swr";
 // import logger from "../../../libs/logger";
 import { useEffect, useState } from "react";
 
-const MonitorBottomRight = (): FunctionComponent => {
+interface MonitorBottomRightProps {
+	listMergedSiteData: any[];
+}
+
+const MonitorBottomRight = ({
+	listMergedSiteData,
+}: MonitorBottomRightProps): FunctionComponent => {
 	const [listAllSiteImage, setListAllSiteImage] = useState<any[] | undefined>(
 		[]
 	);
-	// const dummysiteid = [
-	// 	// { siteid: "1", sitename: "Batu Ceper" },
-	// 	{ siteid: "2", sitename: "Cilamaya" },
-	// 	{ siteid: "3", sitename: "Ciasem" },
-	// 	{ siteid: "4", sitename: "kalijaga" },
-	// 	{ siteid: "5", sitename: "Kanci" },
-	// 	{ siteid: "6", sitename: "Ciputra Haji" },
-	// 	{ siteid: "7", sitename: "Cisomang" },
-	// 	{ siteid: "8", sitename: "Cilutung" },
-	// 	{ siteid: "9", sitename: "Wonokerto" },
-	// 	{ siteid: "10", sitename: "Pang" },
-	// 	{ siteid: "11", sitename: "Tajum Margasana" },
-	// 	{ siteid: "12", sitename: "Munjungan" },
-	// 	{ siteid: "13", sitename: "Wirolegi" },
-	// 	{ siteid: "14", sitename: "Jetak" },
-	// 	{ siteid: "15", sitename: "Pemali" },
-	// ];
 
 	const { dataImage } = useSiteImage();
 
@@ -47,18 +36,30 @@ const MonitorBottomRight = (): FunctionComponent => {
 				<div className="row-span-1 col-span-5 mt-6">
 					<div className="grid grid-rows-3 grid-cols-5 gap-4 mx-10">
 						{listAllSiteImage &&
-							listAllSiteImage.map((site: any) => {
+							listAllSiteImage.map((site: any, index: number) => {
+								let imagePath = "no-image.png";
+
+								if (site.imagePath && site.imagePath !== "-") {
+									imagePath = `https://wim-image-bucket.sgp1.digitaloceanspaces.com/${site.imagePath}`;
+								}
+
+								try {
+									const sitedata = listMergedSiteData[index];
+									console.log(sitedata.sitecolor);
+									if (sitedata && sitedata.sitecolor === "red") {
+										imagePath = "no-image.png";
+									}
+								} catch (error) {
+									console.log(error);
+								}
+
 								return (
 									<div
 										key={site.siteId}
 										className="flex flex-col w-full items-center justify-center"
 									>
 										<img
-											src={
-												site.imagePath && site.imagePath !== "-"
-													? `https://wim-image-bucket.sgp1.digitaloceanspaces.com/${site.imagePath}`
-													: "no-image.png"
-											}
+											src={imagePath}
 											alt="site.jpeg"
 											className="h-auto w-auto mt-5 border-2 border-gray-400 shadow-md"
 										/>

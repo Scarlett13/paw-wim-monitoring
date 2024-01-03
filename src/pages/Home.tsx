@@ -78,7 +78,9 @@ const Home = (): FunctionComponent => {
 					isLoading={isValidating}
 					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
 				/>
-				<MonitorBottomRight />
+				<MonitorBottomRight
+					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
+				/>
 			</div>
 		</main>
 	);
