@@ -1,6 +1,7 @@
 import useSWR from "swr";
+import { dummyImagePath } from "../types/map-marker";
 
-export function useSiteStatus() {
+export function useBukakaSiteStatus() {
 	const fetcher = () =>
 		//pake proxy biar gak ke block cors
 		fetch("/api/v1/wim-status", {
@@ -28,7 +29,35 @@ export function useSiteStatus() {
 	};
 }
 
-export function useSiteImage() {
+export function useUppkbSiteStatus() {
+	const fetcher = () =>
+		//pake proxy biar gak ke block cors
+		fetch("/api/v1/wim-status?projecttype=uppkb", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*",
+			},
+		}).then((res) => res.json());
+
+	const { data, error, isLoading, isValidating } = useSWR(
+		"/v1/wim-status",
+		fetcher,
+		{
+			refreshInterval: 30000, //30 seconds
+			revalidateOnFocus: false,
+		}
+	);
+
+	return {
+		data,
+		isLoading,
+		error,
+		isValidating,
+	};
+}
+
+export function useSiteImage(isUppkb?: boolean) {
 	const fetcher = () =>
 		//pake proxy biar gak ke block cors
 		fetch("/api/v1/site-image", {
@@ -50,10 +79,12 @@ export function useSiteImage() {
 		}
 	);
 
-	return {
-		dataImage: data,
-		isImageLoading: isLoading,
-		imageError: error,
-		isImageValidating: isValidating,
-	};
+	return isUppkb
+		? { dataImage: dummyImagePath }
+		: {
+				dataImage: data,
+				isImageLoading: isLoading,
+				imageError: error,
+				isImageValidating: isValidating,
+			};
 }

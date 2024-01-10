@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import type { FunctionComponent } from "../common/types";
+import type { FunctionComponent } from "../../common/types";
 import {
 	MonitorBottomLeft,
 	MonitorBottomRight,
 	MonitorTopLeft,
 	MonitorTopRight,
-} from "../components/layout/monitors";
+} from "../../components/layout/monitors";
 // import { MapMarker } from "../types/map-marker";
 // import logger from "../libs/logger";
-import { useSiteStatus } from "../hooks/use-swr";
-import { IWimStatusResponse } from "../types/response";
-import { dummyMarker } from "../types/map-marker";
-import { findSiteObjectFromId, mergeObjectsArray } from "../utils/arrayUtils";
-import { getKeyShortcut } from "../utils/keyPressedUtils";
+import { useBukakaSiteStatus } from "../../hooks/use-swr";
+import { IWimStatusResponse } from "../../types/response";
+import { dummyMarker } from "../../types/map-marker";
+import {
+	findSiteObjectFromId,
+	mergeObjectsArray,
+} from "../../utils/arrayUtils";
+import { getKeyShortcut } from "../../utils/keyPressedUtils";
 // import { findSiteObjectFromId } from "../utils/arrayUtils";
 
 const Home = (): FunctionComponent => {
@@ -20,7 +23,7 @@ const Home = (): FunctionComponent => {
 		useState<IWimStatusResponse | null>(null);
 	const [mergedSite, setMergedSite] = useState<any[] | null>(null);
 
-	const { data, isValidating } = useSiteStatus();
+	const { data, isValidating } = useBukakaSiteStatus();
 
 	useEffect(() => {
 		const tempMergedSite = mergeObjectsArray(

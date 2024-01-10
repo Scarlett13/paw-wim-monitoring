@@ -17,12 +17,14 @@ interface MonitorTopLeftProps {
 	>;
 	listMergedSiteData: any[];
 	isLoading: boolean;
+	isUppkb?: boolean;
 }
 
 const MonitorTopLeft = ({
 	selectedSiteMapHook,
 	listMergedSiteData,
 	isLoading,
+	isUppkb,
 }: MonitorTopLeftProps): FunctionComponent => {
 	const [countOk, setCountOk] = useState<number | string>(0);
 	const [countWarning, setCountWarning] = useState<number | string>(0);
@@ -67,6 +69,7 @@ const MonitorTopLeft = ({
 				{/* map */}
 				<div className="col-span-4 row-span-4 text-center h-full">
 					<MyMap
+						isUppkb={isUppkb}
 						isLoading={isLoading}
 						markers={listMergedSiteData}
 						selectedSiteMapHook={selectedSiteMapHook}

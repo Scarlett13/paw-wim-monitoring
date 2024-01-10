@@ -10,13 +10,19 @@ interface MyMapInterface {
 		React.SetStateAction<IWimStatusResponse | null>
 	>;
 	isLoading: boolean;
+	isUppkb?: boolean;
 }
 
 export function MyMap({
 	markers,
 	selectedSiteMapHook,
 	isLoading,
+	isUppkb,
 }: MyMapInterface) {
+	const uppkbDefaultCenter: [number, number] = [-2.5773647, 111.5631909];
+	const bukakaDefaultCenter: [number, number] = [-7.2022355, 110.7561662];
+	const uppkbDefaultZoom = 5.05;
+	const bukakaDefaultZoom = 6.5;
 	if (isLoading) {
 		return (
 			<>
@@ -26,8 +32,8 @@ export function MyMap({
 	}
 	return (
 		<Map
-			defaultCenter={[-7.2022355, 110.7561662]}
-			defaultZoom={6.5}
+			defaultCenter={isUppkb ? uppkbDefaultCenter : bukakaDefaultCenter}
+			defaultZoom={isUppkb ? uppkbDefaultZoom : bukakaDefaultZoom}
 			boxClassname="h-full w-full"
 		>
 			{markers &&
