@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "@/src/common/types";
-import Table from "../../table/table-monitor3";
+import Table from "../../monitor1-assets/table";
 import Typography from "../../ui/default-typography";
 import { SimpleCard } from "../../cards";
 
@@ -12,12 +12,12 @@ const MonitorBottomLeft = (): FunctionComponent => {
 				<div className="col-span-4 text-center mt-4 mr-3 ml-3">
 					<SimpleCard className="shadow-lg border-solid border-4 border-slate-400">
 						<Typography variant="j2" className="font-bold">
-							Daftar Status WIM
+							CCTV Capture Here
 						</Typography>
 					</SimpleCard>
 				</div>
 				{/* table */}
-				<div className="col-span-4 row-span-6 mt-2">
+				<div className="col-span-4 row-span-4 mt-2">
 					<Table />
 				</div>
 			</div>

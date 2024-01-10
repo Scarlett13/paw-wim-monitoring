@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "@/src/common/types";
-import { StatusCard } from "../../cards";
+import { SimpleCard, StatusCard } from "../../cards";
 import Typography from "../../ui/default-typography";
 import { MyMap } from "../../ui/default-map";
 // import logger from "../../../libs/logger";
@@ -7,6 +7,8 @@ import { countStatus } from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
+import Button from "../../buttons/default-button";
+// import { useNavigate } from "@tanstack/router";
 // import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {
@@ -38,6 +40,16 @@ const MonitorTopLeft = ({
 		}
 	}, [listMergedSiteData]);
 
+	// const [isClicked, setIsClicked] = useState(false);
+	// const navigate = useNavigate()
+
+	// const handleClick = () => {
+	// 	setIsClicked((prevState) = !prevState);
+	// 	if (!isClicked) {
+	// 		navigate('../Table')
+	// 	}
+	// }
+
 	return (
 		<>
 			{/* Monitor 1 */}
@@ -56,7 +68,6 @@ const MonitorTopLeft = ({
 					</Typography>
 				</div>
 				<div className="w-full text-center col-span-1 border-l-2 border-gray-500">
-
 					<img
 						src="../public/Logo-VGT-1.svg"
 						alt="Logo-VGT-1"
@@ -64,12 +75,19 @@ const MonitorTopLeft = ({
 					/>
 				</div>
 				{/* map */}
-				<div className="col-span-4 row-span-4 text-center h-full">
-					<MyMap
-						isLoading={isLoading}
-						markers={listMergedSiteData}
-						selectedSiteMapHook={selectedSiteMapHook}
-					/>
+				<div className="col-span-4 row-span-4 h-full">
+					<div className="col-span-4 row-span-4 h-full">
+						<div className="flex justify-end">
+							<Button className="bg-black absolute z-10 rounded-full mt-2 mr-2">
+								<SimpleCard>Togle button</SimpleCard>
+							</Button>
+						</div>
+						<MyMap
+							isLoading={isLoading}
+							markers={listMergedSiteData}
+							selectedSiteMapHook={selectedSiteMapHook}
+						/>
+					</div>
 				</div>
 				{/* ok status */}
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
