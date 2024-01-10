@@ -31,7 +31,7 @@ export function useBukakaSiteStatus() {
 
 export function useUppkbSiteStatus() {
 	const fetcher = () =>
-		//pake proxy biar gak ke block cors
+		//pake proxy biar gak ke block cors, projecttype uppkb biar bisa query uppkb
 		fetch("/api/v1/wim-status?projecttype=uppkb", {
 			method: "GET",
 			headers: {
