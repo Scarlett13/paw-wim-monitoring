@@ -30,7 +30,7 @@ const MonitorBottomRight = ({
 				<div className="col-span-5 mt-4 text-center mx-4">
 					<SimpleCard className="shadow-lg border-solid border-4 border-slate-400">
 						<Typography variant="j2" className="font-bold">
-							CCTV CAPTURE
+							LAST VEHICLE
 						</Typography>
 					</SimpleCard>
 				</div>
