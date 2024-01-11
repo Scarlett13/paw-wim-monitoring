@@ -34,7 +34,7 @@
 		"commitlint": "commitlint --edit",
 		"commitizen": "exec < /dev/tty && git cz --hook || true",
 		"deploy": "tsc && vite build && pm2 start ecosystem.config.js --env production",
-		"deploypm2": "tsc && vite build && pm2 start 'yarn preview --port 4171 --host' --name frontend"
+		"deploypm2": "tsc && vite build && pm2 start 'yarn preview --port 4171 --host' --name frontend-uppkb"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.1.1",
