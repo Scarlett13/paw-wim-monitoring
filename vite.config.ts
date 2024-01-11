@@ -13,9 +13,9 @@ export default defineConfig({
 			injectRegister: "auto",
 			includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
 			manifest: {
-				name: "My Awesome App",
-				short_name: "MyApp",
-				description: "My Awesome App description",
+				name: "Bukaka WIM Monitoring",
+				short_name: "WIM Monitoring",
+				description: "Bukaka Weigh In Motion Monitoring Dashboard",
 				theme_color: "#ffffff",
 				icons: [
 					{
