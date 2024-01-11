@@ -8,9 +8,9 @@ import {
 } from "../../components/layout/monitors";
 // import { MapMarker } from "../types/map-marker";
 // import logger from "../libs/logger";
-import { useBukakaSiteStatus } from "../../hooks/use-swr";
+import { useUppkbSiteStatus } from "../../hooks/use-swr";
 import { IWimStatusResponse } from "../../types/response";
-import { dummyMarker } from "../../types/map-marker";
+import { dummyUppkbMarker } from "../../types/map-marker";
 import {
 	findSiteObjectFromId,
 	mergeObjectsArray,
@@ -23,16 +23,17 @@ const Home = (): FunctionComponent => {
 		useState<IWimStatusResponse | null>(null);
 	const [mergedSite, setMergedSite] = useState<any[] | null>(null);
 
-	const { data, isValidating } = useBukakaSiteStatus();
+	const { data, isValidating } = useUppkbSiteStatus();
 
 	useEffect(() => {
+		console.log(data);
 		const tempMergedSite = mergeObjectsArray(
-			dummyMarker,
+			dummyUppkbMarker,
 			(data as IWimStatusResponse[]) || null
 		);
 
 		setMergedSite(tempMergedSite);
-	}, [dummyMarker, data]);
+	}, [dummyUppkbMarker, data]);
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
@@ -69,11 +70,13 @@ const Home = (): FunctionComponent => {
 		<main className="w-screen h-screen">
 			<div className="flex flex-col min-w-fit min-h-fit max-w-screen 4xl:grid 4xl:grid-cols-2 4xl:grid-rows-2 4xl:w-full 4xl:h-full">
 				<MonitorTopLeft
+					isUppkb={true}
 					isLoading={isValidating}
 					selectedSiteMapHook={setSelectedSiteMap}
 					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
 				/>
 				<MonitorTopRight
+					isUppkb={true}
 					isLoading={isValidating}
 					selectedSite={selectedSiteMap}
 				/>
@@ -82,6 +85,7 @@ const Home = (): FunctionComponent => {
 					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
 				/>
 				<MonitorBottomRight
+					isUppkb={true}
 					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
 				/>
 			</div>
