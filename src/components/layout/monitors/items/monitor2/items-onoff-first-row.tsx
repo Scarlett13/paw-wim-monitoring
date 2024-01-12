@@ -6,11 +6,13 @@ import OnOffStatusLayout from "../../../on-off-status";
 interface IMonitorTopRightOnOffFirstRowItems {
 	isLoading: boolean;
 	selectedSite: IWimStatusResponse;
+	isUppkb?: boolean;
 }
 
 const MonitorTopRightOnOffFirstRowItems = ({
 	selectedSite,
 	isLoading,
+	isUppkb,
 }: IMonitorTopRightOnOffFirstRowItems): FunctionComponent => {
 	return (
 		<>
@@ -43,16 +45,19 @@ const MonitorTopRightOnOffFirstRowItems = ({
 				)}
 			/>
 
-			{/* VPN App */}
-			<OnOffStatusLayout
-				isLoading={isLoading}
-				title="VPN App"
-				className="-mt-10 -mb-6"
-				value={selectedSite.app_process.vpn_app.status}
-				color={getTypographyColorFromStatus(
-					selectedSite.app_process.vpn_app.status
-				)}
-			/>
+			{isUppkb ? (
+				<></>
+			) : (
+				<OnOffStatusLayout
+					isLoading={isLoading}
+					title="VPN App"
+					className="-mt-10 -mb-6"
+					value={selectedSite.app_process.vpn_app.status}
+					color={getTypographyColorFromStatus(
+						selectedSite.app_process.vpn_app.status
+					)}
+				/>
+			)}
 		</>
 	);
 };

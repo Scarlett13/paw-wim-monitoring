@@ -7,7 +7,7 @@ import { IWimStatusResponse } from "@/src/types/response";
 // import NetworkGaugeMeter from "../../charts/gauge/network-gauge";
 import MonitorTopRightGaugeItems from "./items/monitor2/items-gauge";
 import MonitorTopRightOnOffFirstRowItems from "./items/monitor2/items-onoff-first-row";
-import MonitorTopRightOnOffSecondRowItems from "./items/monitor2/items-onoff-second-row";
+// import MonitorTopRightOnOffSecondRowItems from "./items/monitor2/items-onoff-second-row";
 
 // import logger from "../../../libs/logger";
 
@@ -42,12 +42,13 @@ const MonitorTopRight = ({
 				<MonitorTopRightOnOffFirstRowItems
 					isLoading={isLoading}
 					selectedSite={selectedSite}
+					isUppkb={isUppkb}
 				/>
 
-				<MonitorTopRightOnOffSecondRowItems
+				{/* <MonitorTopRightOnOffSecondRowItems
 					isLoading={isLoading}
 					selectedSite={selectedSite}
-				/>
+				/> */}
 			</div>
 		</>
 	) : (

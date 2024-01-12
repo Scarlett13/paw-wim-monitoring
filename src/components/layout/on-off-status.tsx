@@ -21,7 +21,7 @@ export default function OnOffStatusLayout({
 	return (
 		<div
 			className={clsxm(
-				"row-span-2 col-span-1 bg-white h-full w-full flex flex-col items-center justify-center",
+				"row-span-4 col-span-1 bg-white h-full w-full flex flex-col items-center justify-center",
 				className
 			)}
 		>
