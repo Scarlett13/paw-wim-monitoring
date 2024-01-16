@@ -13,53 +13,60 @@ import Typography from "../../ui/default-typography";
 // import { getNerworkBytes } from "../../../utils/bytesUtils";
 import { SimpleCard } from "../../cards";
 import ProgressBarMeter from "../../charts/bar/progress-bar-meter";
+import { IWimStatusResponse } from "@/src/types/response";
+import { MonitorEmptyState } from "./monitor-empty-state";
 
-const MonitorTopRight = (): FunctionComponent => {
-	return (
+interface MonitorTopRightProps {
+	selectedSite : IWimStatusResponse | null;
+}
+
+const MonitorTopRight = ({selectedSite}:MonitorTopRightProps): FunctionComponent => {
+
+	return selectedSite ?(
 		<>
 			{/* monitor 2 */}
 			<div className="grid grid-cols-4 grid-rows-7 bottom-right bg-white h-screen w-screen 4xl:h-full 4xl:w-full">
 				<div className="col-span-4 text-center mt-4 mr-3 ml-3">
 					<SimpleCard className="shadow-lg border-solid border-4 border-slate-400">
 						<Typography variant="j2" className="font-bold">
-							Progress Bar Example Here
+							Site {selectedSite?.sitename}
 						</Typography>
 					</SimpleCard>
 				</div>
 				<div className="flex items-center justify-center col-span-2 row-span-2 mt-5 mb-5">
-					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg">
+					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg cursor-pointer hover:bg-slate-100">
 						<ProgressBarMeter interval={1000} deviceName="PC" />
 					</SimpleCard>
 				</div>
 
 				<div className="flex items-center justify-center col-span-2 row-span-2 mt-5 mb-5">
-					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg">
+					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg cursor-pointer hover:bg-slate-100">
 						<ProgressBarMeter interval={1500} deviceName="LIDAR" />
 					</SimpleCard>
 				</div>
 				<div className="flex items-center justify-center col-span-2 row-span-2 mb-5">
-					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg">
+					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg cursor-pointer hover:bg-slate-100">
 						<ProgressBarMeter interval={2000} deviceName="CAMERA" />
 					</SimpleCard>
 				</div>
 				<div className="flex items-center justify-center col-span-2 row-span-2 mb-5">
-					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg">
+					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg cursor-pointer hover:bg-slate-100">
 						<ProgressBarMeter interval={2500} deviceName="WIM" />
 					</SimpleCard>
 				</div>
 				<div className="flex items-center justify-center col-span-2 row-span-2 mb-5">
-					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg">
+					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg cursor-pointer hover:bg-slate-100">
 						<ProgressBarMeter interval={3000} deviceName="APP" />
 					</SimpleCard>
 				</div>
 				<div className="flex items-center justify-center col-span-2 row-span-2 mb-5">
-					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg">
+					<SimpleCard className="w-full h-full mr-5 ml-5 flex items-center border-4 border-gray-200 shadow-lg cursor-pointer hover:bg-slate-100">
 						<ProgressBarMeter interval={3500} deviceName="INTERNET" />
 					</SimpleCard>
 				</div>
 			</div>
 		</>
-	);
+	) : (<MonitorEmptyState/>);
 };
 
 export default MonitorTopRight;

@@ -28,7 +28,7 @@ export function MyMap({
 		<Map
 			defaultCenter={[-7.2022355, 110.7561662]}
 			defaultZoom={6.5}
-			boxClassname="h-full w-full"
+			boxClassname="h-full w-full border-8 border-gray-400"
 		>
 			{markers &&
 				markers.map((marker) => {

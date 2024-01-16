@@ -1,7 +1,7 @@
 import type { FunctionComponent } from "@/src/common/types";
-import Table from "../../monitor1-assets/table";
 import Typography from "../../ui/default-typography";
 import { SimpleCard } from "../../cards";
+import CctvTable from "../../monitor3-assets/cctv-capture";
 
 const MonitorBottomLeft = (): FunctionComponent => {
 	return (
@@ -17,8 +17,8 @@ const MonitorBottomLeft = (): FunctionComponent => {
 					</SimpleCard>
 				</div>
 				{/* table */}
-				<div className="col-span-4 row-span-4 mt-2">
-					<Table />
+				<div className="col-span-4 row-span-6 mt-2 mb-2">
+					<CctvTable/>
 				</div>
 			</div>
 		</>

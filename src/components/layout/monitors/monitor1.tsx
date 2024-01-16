@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
 import Button from "../../buttons/default-button";
+import Table from "../../monitor1-assets/table";
+import { FaMapLocationDot, FaTableCells } from "react-icons/fa6"
+import { IconContext } from "react-icons";
 // import { useNavigate } from "@tanstack/router";
 // import { IWimStatusResponse } from "@/src/types/response";
 
@@ -40,55 +43,59 @@ const MonitorTopLeft = ({
 		}
 	}, [listMergedSiteData]);
 
-	// const [isClicked, setIsClicked] = useState(false);
-	// const navigate = useNavigate()
+	const [isTablePage, setIsTablePage] = useState(false);
 
-	// const handleClick = () => {
-	// 	setIsClicked((prevState) = !prevState);
-	// 	if (!isClicked) {
-	// 		navigate('../Table')
-	// 	}
-	// }
+	const handleClick = () => {
+		setIsTablePage(!isTablePage)
+	}
 
 	return (
 		<>
 			{/* Monitor 1 */}
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
-				<div className="w-full col-span-1 border-r-2 border-gray-300">
+				<div className="w-full h-full col-span-1 border-r-2 border-black">
 					<img
 						src="../public/Logo-GBU-2.svg"
 						alt="Logo-GBU-2"
-						className="object-cover w-40 h-20"
+						className="ml-8 mt-2 object-cover w-72 h-20"
 					/>
 				</div>
 				<div className="w-full text-center col-span-2">
-					<Typography variant="j1" className="mt-4">
+					<Typography variant="j1" className="mt-8">
 						WIM Monitoring
 					</Typography>
 				</div>
-				<div className="w-full text-center col-span-1 border-l-2 border-gray-500">
+				<div className="w-full col-span-1 border-l-2 border-black">
 					<img
 						src="../public/Logo-VGT-1.svg"
 						alt="Logo-VGT-1"
-						className="ml-16 object-cover w-44 h-20"
+						className="ml-16 mt-2 object-cover w-56 h-20"
 					/>
 				</div>
 				{/* map */}
 				<div className="col-span-4 row-span-4 h-full">
 					<div className="col-span-4 row-span-4 h-full">
-						<div className="flex justify-end">
-							<Button className="bg-black absolute z-10 rounded-full mt-2 mr-2">
-								<SimpleCard>Togle button</SimpleCard>
+						<div className={`flex ${isTablePage ? 'justify-end' : 'justify-end'}`}>
+							<Button 
+							variant="ghost" 
+							className={`absolute z-10 text-black border-2 border-black rounded-full
+							${isTablePage ? 'mr-5 mt-20' : 'mr-5 mt-24'} ${isTablePage ? 'top-80' : 'top-2'}`}
+							onClick={handleClick}>
+								<SimpleCard > { 
+								isTablePage ? <FaMapLocationDot/> : <FaTableCells/> 
+								}
+								</SimpleCard>
 							</Button>
 						</div>
-						<MyMap
-							isLoading={isLoading}
+						{isTablePage ? ( <Table/>) : (<MyMap
+							isLoading={isTablePage}
 							markers={listMergedSiteData}
 							selectedSiteMapHook={selectedSiteMapHook}
-						/>
+						/>)}
 					</div>
 				</div>
+				
 				{/* ok status */}
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard

@@ -70,12 +70,12 @@ const Home = (): FunctionComponent => {
 					selectedSiteMapHook={setSelectedSiteMap}
 					listMergedSiteData={(mergedSite as IWimStatusResponse[]) || null}
 				/>
-				<MonitorTopRight
+				<MonitorTopRight selectedSite={selectedSiteMap} />
+				<MonitorBottomLeft />
+				<MonitorBottomRight
 					isLoading={isValidating}
 					selectedSite={selectedSiteMap}
 				/>
-				<MonitorBottomLeft />
-				<MonitorBottomRight />
 			</div>
 		</main>
 	);
