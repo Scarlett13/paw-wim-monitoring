@@ -7,20 +7,23 @@ import { countStatus } from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
 import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
-import logoGBU from "../../../../public/Logo-GBU-2.svg";
+import logoGBU from "../../../../public/dithub.svg";
 import logoVGT from "../../../../public/visi_baru.svg";
+import VerticalStatus from "./items/monitor1/vertical-status";
 // import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {
 	selectedSiteMapHook: React.Dispatch<
 		React.SetStateAction<IWimStatusResponse | null>
 	>;
+	selectedSite: IWimStatusResponse | null;
 	listMergedSiteData: any[];
 	isLoading: boolean;
 	isUppkb?: boolean;
 }
 
 const MonitorTopLeft = ({
+	selectedSite,
 	selectedSiteMapHook,
 	listMergedSiteData,
 	isLoading,
@@ -31,6 +34,9 @@ const MonitorTopLeft = ({
 	const [countOff, setCountOff] = useState<number | string>(0);
 
 	useEffect(() => {
+		if (!selectedSite && listMergedSiteData) {
+			selectedSiteMapHook(listMergedSiteData[0]);
+		}
 		if (listMergedSiteData) {
 			setCountOff(countStatus(listMergedSiteData, "red"));
 			setCountOk(countStatus(listMergedSiteData, "green"));
@@ -47,27 +53,23 @@ const MonitorTopLeft = ({
 			{/* Monitor 1 */}
 			<div className="grid grid-cols-4 grid-rows-7 h-screen w-screen 4xl:h-full 4xl:w-full">
 				{/* title and logo */}
-				<div className="w-full col-span-1 border-r-2 border-gray-300">
-					<img
-						src={logoGBU}
-						alt="Logo-GBU-2"
-						className="object-cover ml-10 w-60 h-20"
-					/>
+				<div className="w-full col-span-1 border-r-2 border-gray-300 flex h-full items-center justify-center px-20 py-20">
+					<img src={logoGBU} alt="Logo-dithub-2" />
 				</div>
-				<div className="w-full text-center col-span-2 mt-4">
-					<Typography variant="j1" className="mt-4">
+				<div className="w-full text-center col-span-2 h-full flex items-center justify-center">
+					<Typography variant="j1" className="text-7xl">
 						WIM Monitoring
 					</Typography>
 				</div>
-				<div className="w-full text-center col-span-1 border-l-2 border-gray-300">
+				<div className="w-full col-span-1 border-r-2 border-gray-300 flex h-full items-center justify-center">
 					<img
 						src={logoVGT}
 						alt="Logo-VGT-1"
-						className="object-cover ml-14 w-48 h-20"
+						className="object-cover ml-14 w-64 h-20"
 					/>
 				</div>
 				{/* map */}
-				<div className="col-span-4 row-span-4 text-center h-full">
+				<div className="col-span-3 row-span-4 text-center h-full">
 					<MyMap
 						isUppkb={isUppkb}
 						isLoading={isLoading}
@@ -75,20 +77,24 @@ const MonitorTopLeft = ({
 						selectedSiteMapHook={selectedSiteMapHook}
 					/>
 				</div>
+				<div className="col-span-1 row-span-7 shadow-md m-2 rounded-lg">
+					{/* status */}
+					<VerticalStatus selectedSite={selectedSite} isLoading={isLoading} />
+				</div>
 				{/* ok status */}
 				<div className="row-span-2 shadow-md m-2 rounded-lg">
 					<StatusCard
 						cardstatus="ok"
 						className="bg-white h-full w-full flex flex-col gap-3"
 					>
-						<Typography variant="j1" className="text-center">
+						<Typography variant="j1" className="text-center text-7xl">
 							OK
 						</Typography>
-						<div className="border-t border-gray-500 flex-grow">
+						<div className="border-t border-gray-500 flex-grow text-center">
 							{isLoading ? (
 								<Skeleton className="h-full w-full" />
 							) : (
-								<Typography variant="j1" className="text-center text-7xl">
+								<Typography variant="j1" className="text-center text-7xl mt-16">
 									{countOk}
 								</Typography>
 							)}
@@ -101,14 +107,14 @@ const MonitorTopLeft = ({
 						cardstatus="warning"
 						className="bg-white h-full w-full flex flex-col gap-3"
 					>
-						<Typography variant="j1" className="text-center">
-							WARNING
+						<Typography variant="j1" className="text-center text-7xl">
+							PERINGATAN
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
 							{isLoading ? (
 								<Skeleton className="h-full w-full" />
 							) : (
-								<Typography variant="j1" className="text-center text-7xl">
+								<Typography variant="j1" className="text-center text-7xl mt-16">
 									{countWarning}
 								</Typography>
 							)}
@@ -121,33 +127,17 @@ const MonitorTopLeft = ({
 						cardstatus="off"
 						className="bg-white h-full w-full flex flex-col gap-3"
 					>
-						<Typography variant="j1" className="text-center">
-							OFF
+						<Typography variant="j1" className="text-center text-7xl">
+							MATI
 						</Typography>
 						<div className="border-t border-gray-500 flex-grow">
 							{isLoading ? (
 								<Skeleton className="h-full w-full" />
 							) : (
-								<Typography variant="j1" className="text-center text-7xl">
+								<Typography variant="j1" className="text-center text-7xl mt-16">
 									{countOff}
 								</Typography>
 							)}
-						</div>
-					</StatusCard>
-				</div>
-				{/* maintenance status */}
-				<div className="row-span-2 shadow-md m-2 rounded-lg">
-					<StatusCard
-						cardstatus="maintenance"
-						className="bg-white h-full w-full flex flex-col gap-3"
-					>
-						<Typography variant="j1" className="text-center">
-							MT
-						</Typography>
-						<div className="border-t border-gray-500 flex-grow">
-							<Typography variant="j1" className="text-center text-7xl">
-								0
-							</Typography>
 						</div>
 					</StatusCard>
 				</div>

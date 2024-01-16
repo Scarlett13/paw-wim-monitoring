@@ -19,9 +19,9 @@ export function MyMap({
 	isLoading,
 	isUppkb,
 }: MyMapInterface) {
-	const uppkbDefaultCenter: [number, number] = [-2.5773647, 111.5631909];
+	const uppkbDefaultCenter: [number, number] = [-2.1475649, 118.5581288];
 	const bukakaDefaultCenter: [number, number] = [-7.2022355, 110.7561662];
-	const uppkbDefaultZoom = 5.05;
+	const uppkbDefaultZoom = 5.85;
 	const bukakaDefaultZoom = 6.5;
 	if (isLoading) {
 		return (

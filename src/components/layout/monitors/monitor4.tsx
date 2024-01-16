@@ -1,6 +1,6 @@
 import type { FunctionComponent } from "../../../common/types";
-import { SimpleCard } from "../../cards";
-import Typography from "../../ui/default-typography";
+// import { SimpleCard } from "../../cards";
+// import Typography from "../../ui/default-typography";
 import { useSiteImage } from "../../../hooks/use-swr";
 // import logger from "../../../libs/logger";
 import { useEffect, useState } from "react";
@@ -18,6 +18,10 @@ const MonitorBottomRight = ({
 		[]
 	);
 
+	if (listAllSiteImage || listMergedSiteData) {
+		//gg
+	}
+
 	const { dataImage } = useSiteImage(isUppkb);
 
 	useEffect(() => {
@@ -27,7 +31,7 @@ const MonitorBottomRight = ({
 		<>
 			{/* monitor 4 */}
 			<div className="grid grid-cols-5 grid-rows-7 bottom-right h-screen w-screen 4xl:h-full 4xl:w-full">
-				<div className="col-span-5 mt-4 text-center mx-4">
+				{/* <div className="col-span-5 mt-4 text-center mx-4">
 					<SimpleCard className="shadow-lg border-solid border-4 border-slate-400">
 						<Typography variant="j2" className="font-bold">
 							LAST VEHICLE
@@ -69,7 +73,7 @@ const MonitorBottomRight = ({
 								);
 							})}
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
