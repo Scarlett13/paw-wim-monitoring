@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import type { FunctionComponent } from "../../common/types";
-import {
-	MonitorBottomLeft,
-	MonitorBottomRight,
-	MonitorTopLeft,
-	MonitorTopRight,
-} from "../../components/layout/monitors";
+import { MonitorTopLeft } from "../../components/layout/monitors";
 // import { MapMarker } from "../types/map-marker";
 // import logger from "../libs/logger";
 import { useUppkbSiteStatus } from "../../hooks/use-swr";
