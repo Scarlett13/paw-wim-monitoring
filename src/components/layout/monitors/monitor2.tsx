@@ -14,11 +14,13 @@ import MonitorTopRightOnOffSecondRowItems from "./items/monitor2/items-onoff-sec
 interface MonitorTopRightProps {
 	selectedSite: IWimStatusResponse | null;
 	isLoading: boolean;
+	isUppkb?: boolean;
 }
 
 const MonitorTopRight = ({
 	selectedSite,
 	isLoading,
+	isUppkb,
 }: MonitorTopRightProps): FunctionComponent => {
 	return selectedSite ? (
 		<>
@@ -32,6 +34,7 @@ const MonitorTopRight = ({
 				</div>
 
 				<MonitorTopRightGaugeItems
+					isUppkb={isUppkb || false}
 					isLoading={isLoading}
 					selectedSite={selectedSite}
 				/>

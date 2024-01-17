@@ -6,6 +6,96 @@ export type MapMarker = {
 	sitecolor: "red" | "green" | "yellow";
 };
 
+export const dummyUppkbMarker: MapMarker[] = [
+	{
+		siteid: "16",
+		sitename: "Guyangan",
+		sitelat: -7.5829851,
+		sitelong: 111.8725421,
+		sitecolor: "green",
+	},
+	{
+		siteid: "17",
+		sitename: "Balonggandu",
+		sitelat: -6.3774967,
+		sitelong: 107.5122731,
+		sitecolor: "green",
+	},
+	{
+		siteid: "18",
+		sitename: "Kulwaru",
+		sitelat: -7.8915389,
+		sitelong: 110.1197307,
+		sitecolor: "red",
+	},
+	{
+		siteid: "19",
+		sitename: "Muara Lembu",
+		sitelat: -0.4197046,
+		sitelong: 101.3640291,
+		sitecolor: "red",
+	},
+	{
+		siteid: "20",
+		sitename: "Losarang",
+		sitelat: -6.3855382,
+		sitelong: 108.1352374,
+		sitecolor: "red",
+	},
+	{
+		siteid: "21",
+		sitename: "Wanareja",
+		sitelat: -7.3307158,
+		sitelong: 108.6531156,
+		sitecolor: "green",
+	},
+	{
+		siteid: "22",
+		sitename: "Pelawan",
+		sitelat: -2.4339951,
+		sitelong: 102.7051919,
+		sitecolor: "green",
+	},
+];
+
+export const dummyImagePath: any[] = [
+	{
+		siteId: "16",
+		siteName: "Guyangan",
+		imagePath: "-",
+	},
+	{
+		siteId: "17",
+		siteName: "Balonggandu",
+		imagePath: "-",
+	},
+	{
+		siteId: "18",
+		siteName: "Kulwaru",
+		imagePath: "-",
+	},
+	{
+		siteId: "19",
+		siteName: "Muara Lembu",
+		imagePath: "-",
+	},
+	{
+		siteId: "20",
+		siteName: "Losarang",
+		imagePath: "-",
+	},
+	{
+		siteId: "21",
+		siteName: "Wanareja",
+		imagePath: "-",
+	},
+	{
+		siteId: "22",
+		siteName: "Pelawan",
+		imagePath: "-",
+	},
+];
+
 export const dummyMarker: MapMarker[] = [
 	{
 		siteid: "1",

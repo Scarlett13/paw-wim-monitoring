@@ -7,21 +7,22 @@ import { useEffect, useState } from "react";
 
 interface MonitorBottomRightProps {
 	listMergedSiteData: any[];
+	isUppkb?: boolean;
 }
 
 const MonitorBottomRight = ({
 	listMergedSiteData,
+	isUppkb,
 }: MonitorBottomRightProps): FunctionComponent => {
 	const [listAllSiteImage, setListAllSiteImage] = useState<any[] | undefined>(
 		[]
 	);
 
-	const { dataImage } = useSiteImage();
+	const { dataImage } = useSiteImage(isUppkb);
 
 	useEffect(() => {
 		setListAllSiteImage(dataImage ? (dataImage as any[]) : []);
 	}, [dataImage]);
-	// logger(dataImage);
 	return (
 		<>
 			{/* monitor 4 */}
@@ -37,7 +38,7 @@ const MonitorBottomRight = ({
 					<div className="grid grid-rows-3 grid-cols-5 gap-4 mx-10">
 						{listAllSiteImage &&
 							listAllSiteImage.map((site: any, index: number) => {
-								let imagePath = "no-image.png";
+								let imagePath = "/no-image.png";
 
 								if (site.imagePath && site.imagePath !== "-") {
 									imagePath = `https://wim-image-bucket.sgp1.digitaloceanspaces.com/${site.imagePath}`;
@@ -47,7 +48,7 @@ const MonitorBottomRight = ({
 									const sitedata = listMergedSiteData[index];
 									console.log(sitedata.sitecolor);
 									if (sitedata && sitedata.sitecolor === "red") {
-										imagePath = "no-image.png";
+										imagePath = "/no-image.png";
 									}
 								} catch (error) {
 									console.log(error);

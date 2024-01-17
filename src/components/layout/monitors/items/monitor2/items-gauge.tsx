@@ -17,19 +17,21 @@ import {
 interface IMonitorTopRightGaugeItems {
 	isLoading: boolean;
 	selectedSite: IWimStatusResponse;
+	isUppkb?: boolean;
 }
 
 const MonitorTopRightGaugeItems = ({
 	selectedSite,
 	isLoading,
+	isUppkb,
 }: IMonitorTopRightGaugeItems): FunctionComponent => {
 	let daydiff: number | string = "";
-	const quota_value = getNerworkBytes(
-		selectedSite.orbit_data?.quota_value || "-"
-	);
-	const quota_limit = getNerworkBytes(
-		selectedSite.orbit_data?.quota_limit || "-"
-	);
+	const quota_value = isUppkb
+		? null
+		: getNerworkBytes(selectedSite.orbit_data?.quota_value || "-");
+	const quota_limit = isUppkb
+		? null
+		: getNerworkBytes(selectedSite.orbit_data?.quota_limit || "-");
 
 	const datenow = createCustomTimeZoneDate("Asia/Bangkok");
 	// console.log(datenow.toISO());
@@ -84,26 +86,30 @@ const MonitorTopRightGaugeItems = ({
 			/>
 
 			{/* Network */}
-			<NetworkGaugeLayout
-				isLoading={isLoading}
-				title="Orbit"
-				value={formatNumberWithTwoDecimals(quota_value.value || "OFF")}
-				slidercolor={getColorFromStatus(
-					selectedSite?.orbit_data?.quota_status || "OFF"
-				)}
-				textcolor={getTypographyColorFromStatus(
-					selectedSite?.orbit_data?.end_time_status || "OFF"
-				)}
-				quotaday={`${daydiff} Hari`}
-				onoff={
-					selectedSite.orbit_data.quota_status === "OFF" ||
-					selectedSite.orbit_data.end_time_status === "ERROR"
-				}
-				textSuffix={selectedSite?.orbit_data?.end_time_status ? "GB" : ""}
-				textPrefix=""
-				min={0}
-				max={(quota_limit.value as number) || 100}
-			/>
+			{isUppkb ? (
+				<div className="row-span-3 bg-white h-full w-full flex flex-col items-center justify-center z-10"></div>
+			) : (
+				<NetworkGaugeLayout
+					isLoading={isLoading}
+					title="Orbit"
+					value={formatNumberWithTwoDecimals(quota_value?.value || "OFF")}
+					slidercolor={getColorFromStatus(
+						selectedSite?.orbit_data?.quota_status || "OFF"
+					)}
+					textcolor={getTypographyColorFromStatus(
+						selectedSite?.orbit_data?.end_time_status || "OFF"
+					)}
+					quotaday={`${daydiff} Hari`}
+					onoff={
+						selectedSite.orbit_data?.quota_status === "OFF" ||
+						selectedSite.orbit_data?.end_time_status === "ERROR"
+					}
+					textSuffix={selectedSite?.orbit_data?.end_time_status ? "GB" : ""}
+					textPrefix=""
+					min={0}
+					max={(quota_limit?.value as number) || 100}
+				/>
+			)}
 		</>
 	);
 };

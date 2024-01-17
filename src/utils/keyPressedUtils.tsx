@@ -30,6 +30,27 @@ export function getKeyShortcut(key: string): string | null {
 			return "14";
 		case "%":
 			return "15";
+		case "q":
+		case "Q":
+			return "16";
+		case "w":
+		case "W":
+			return "17";
+		case "e":
+		case "E":
+			return "18";
+		case "r":
+		case "R":
+			return "19";
+		case "t":
+		case "T":
+			return "20";
+		case "y":
+		case "Y":
+			return "21";
+		case "u":
+		case "U":
+			return "22";
 		default:
 			return null;
 	}
@@ -67,6 +88,20 @@ export function getShortcut(key: string): string | null {
 			return "Shift + 4";
 		case "15":
 			return "Shift + 5";
+		case "16":
+			return "q / Q";
+		case "17":
+			return "w / W";
+		case "18":
+			return "e / E";
+		case "19":
+			return "r / R";
+		case "20":
+			return "t / T";
+		case "21":
+			return "y / Y";
+		case "22":
+			return "u / U";
 		default:
 			return null;
 	}
