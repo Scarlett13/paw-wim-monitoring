@@ -23,6 +23,7 @@ const Home = (): FunctionComponent => {
 	const { data, isValidating } = useSiteStatus();
 
 	useEffect(() => {
+		console.log(data);
 		const tempMergedSite = mergeObjectsArray(
 			dummyMarker,
 			(data as IWimStatusResponse[]) || null
