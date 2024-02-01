@@ -1,4 +1,4 @@
-import { IWimStatusResponse } from "@/src/types/response";
+import { IWimStatusResponse } from "../../../src/types/response";
 // import logger from "../../libs/logger";
 // import { MapMarker } from "../../types/map-marker";
 import { Map, Marker } from "pigeon-maps";
@@ -6,9 +6,9 @@ import Skeleton from "./default-skeleton";
 
 interface MyMapInterface {
 	markers?: any[];
-	selectedSiteMapHook: React.Dispatch<
-		React.SetStateAction<IWimStatusResponse | null>
-	>;
+	selectedSiteMapHook:
+		| React.Dispatch<React.SetStateAction<IWimStatusResponse | null>>
+		| undefined;
 	isLoading: boolean;
 	isUppkb?: boolean;
 }
@@ -19,9 +19,9 @@ export function MyMap({
 	isLoading,
 	isUppkb,
 }: MyMapInterface) {
-	const uppkbDefaultCenter: [number, number] = [-2.5773647, 111.5631909];
+	const uppkbDefaultCenter: [number, number] = [-1.462166, 119.9997402];
 	const bukakaDefaultCenter: [number, number] = [-7.2022355, 110.7561662];
-	const uppkbDefaultZoom = 5.05;
+	const uppkbDefaultZoom = 5.45;
 	const bukakaDefaultZoom = 6.5;
 	if (isLoading) {
 		return (
@@ -46,7 +46,7 @@ export function MyMap({
 							anchor={[marker.sitelat, marker.sitelong]}
 							color={marker.sitecolor}
 							onClick={() => {
-								selectedSiteMapHook(marker);
+								selectedSiteMapHook && selectedSiteMapHook(marker);
 							}}
 						/>
 					);

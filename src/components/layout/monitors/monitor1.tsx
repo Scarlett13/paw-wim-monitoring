@@ -1,14 +1,14 @@
-import type { FunctionComponent } from "@/src/common/types";
 import { StatusCard } from "../../cards";
 import Typography from "../../ui/default-typography";
 import { MyMap } from "../../ui/default-map";
 // import logger from "../../../libs/logger";
 import { countStatus } from "../../../utils/arrayUtils";
 import { useEffect, useState } from "react";
-import { IWimStatusResponse } from "@/src/types/response";
 import Skeleton from "../../ui/default-skeleton";
 import logoGBU from "../../../../public/Logo-GBU-2.svg";
 import logoVGT from "../../../../public/visi_baru.svg";
+import { IWimStatusResponse } from "../../../types/response";
+import { FunctionComponent } from "../../../common/types";
 // import { IWimStatusResponse } from "@/src/types/response";
 
 interface MonitorTopLeftProps {

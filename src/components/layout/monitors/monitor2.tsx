@@ -1,13 +1,13 @@
-import type { FunctionComponent } from "@/src/common/types";
 // import GaugeMeter from "../../charts/gauge/gauge-meter";
 import Typography from "../../ui/default-typography";
 // import { MapMarker } from "@/src/types/map-marker";
 import { MonitorEmptyState } from "./monitor-empty-state";
-import { IWimStatusResponse } from "@/src/types/response";
 // import NetworkGaugeMeter from "../../charts/gauge/network-gauge";
 import MonitorTopRightGaugeItems from "./items/monitor2/items-gauge";
 import MonitorTopRightOnOffFirstRowItems from "./items/monitor2/items-onoff-first-row";
 import MonitorTopRightOnOffSecondRowItems from "./items/monitor2/items-onoff-second-row";
+import { FunctionComponent } from "../../../common/types";
+import { IWimStatusResponse } from "../../../types/response";
 
 // import logger from "../../../libs/logger";
 

@@ -3,7 +3,7 @@ import * as React from "react";
 
 const CARD_SIZE = ["sm", "base"] as const;
 type CardSize = (typeof CARD_SIZE)[number];
-const CARD_STATUS = ["ok", "warning", "off", "maintenance"] as const;
+const CARD_STATUS = ["ok", "warning", "off", "maintenance", "plain"] as const;
 type CardStatus = (typeof CARD_STATUS)[number];
 
 type StatusCardProps = {
@@ -20,7 +20,7 @@ export default function StatusCard({
 	return (
 		<div
 			className={clsxm(
-				"bg-background shadow-sm",
+				"bg-background shadow-sm mb-4",
 				[
 					size === "sm" && ["p-4", "rounded-lg"],
 					size === "base" && ["p-2", "rounded-xl"],
@@ -30,6 +30,7 @@ export default function StatusCard({
 					cardstatus === "warning" && ["text-yellow-500"],
 					cardstatus === "off" && ["text-red-500"],
 					cardstatus === "maintenance" && ["text-blue-500"],
+					cardstatus === "plain" && ["text-black"],
 				],
 				className
 			)}

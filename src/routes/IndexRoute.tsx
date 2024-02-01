@@ -1,5 +1,5 @@
 import { Route } from "@tanstack/router";
-import Home from "../pages/v1/Home";
+import Home from "../pages/v2/Home";
 import { rootRoute } from "./RootRoute";
 
 export const IndexRoute = new Route({

@@ -1,4 +1,3 @@
-import type { FunctionComponent } from "@/src/common/types";
 // import Table from "../../table/table-monitor3";
 import Typography from "../../ui/default-typography";
 import { SimpleCard, StatisticsCard } from "../../cards";
@@ -6,6 +5,7 @@ import { SimpleCard, StatisticsCard } from "../../cards";
 import { IconType } from "react-icons";
 import { getIconCardSite, getStatusCardSite } from "../../../utils/statusUtils";
 import { getShortcut } from "../../../utils/keyPressedUtils";
+import { FunctionComponent } from "../../../common/types";
 
 interface MonitorBottomLeftProps {
 	listMergedSiteData: any[];
