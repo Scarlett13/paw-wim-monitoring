@@ -1,9 +1,11 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import { VitePWA } from "vite-plugin-pwa";
+import { UserConfig } from "vite";
+import { TanStackRouterVite } from "@tanstack/router-vite-plugin";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+const config: UserConfig = {
 	plugins: [
 		VitePWA({
 			registerType: "autoUpdate",
@@ -13,9 +15,9 @@ export default defineConfig({
 			injectRegister: "auto",
 			includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
 			manifest: {
-				name: "Bukaka WIM Monitoring",
+				name: "WIM Monitoring",
 				short_name: "WIM Monitoring",
-				description: "Bukaka Weigh In Motion Monitoring Dashboard",
+				description: "Weigh In Motion Monitoring Dashboard",
 				theme_color: "#ffffff",
 				icons: [
 					{
@@ -34,20 +36,29 @@ export default defineConfig({
 			},
 		}),
 		react(),
+		TanStackRouterVite(),
 	],
 	server: {
 		proxy: {
 			"/api": {
-				target: "http://localhost:3010",
+				target: "http://127.0.0.1:3010",
 				changeOrigin: true,
 				secure: false,
 				rewrite: (path) => path.replace(/^\/api/, ""),
 			},
+			"/v2": {
+				target: "http://localhost:3010/v2",
+				changeOrigin: true,
+				secure: false,
+				rewrite: (path) => path.replace(/^\/v2/, ""),
+			},
 		},
 	},
-	test: {
-		environment: "jsdom",
-		setupFiles: ["./vitest.setup.ts"],
-		css: true,
-	},
-});
+	// test: {
+	// 	environment: "jsdom",
+	// 	setupFiles: ["./vitest.setup.ts"],
+	// 	css: true,
+	// },
+};
+
+export default config;

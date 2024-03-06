@@ -20,7 +20,7 @@ export default function StatusCard({
 	return (
 		<div
 			className={clsxm(
-				"bg-background shadow-sm mb-4",
+				"bg-background",
 				[
 					size === "sm" && ["p-4", "rounded-lg"],
 					size === "base" && ["p-2", "rounded-xl"],

@@ -4,27 +4,27 @@ import { IconType } from "react-icons";
 import Skeleton from "../ui/default-skeleton";
 import Typography from "../ui/default-typography";
 import clsxm from "../../libs/clsxm";
-import ProgressBar from "../v2/custom-progress-bar";
+// import ProgressBar from "../v2/custom-progress-bar";
 
-const statisticsCardVariant = [
+const pingCardVariant = [
 	"primary",
 	"secondary",
 	"danger",
-	"warning",
-	"success",
+	"custom_warning",
+	"custom_success",
 ] as const;
-type StatisticsCardVariant = (typeof statisticsCardVariant)[number];
+type PingCardVariant = (typeof pingCardVariant)[number];
 
-type StatisticsCardProps = {
+type PingCardProps = {
 	icon?: IconType;
 	iconClassName?: string;
 	isLoading?: boolean;
 	label: string;
 	value: number | string;
-	variant?: StatisticsCardVariant;
+	variant?: PingCardVariant;
 } & React.ComponentPropsWithoutRef<"div">;
 
-export default function StatisticsCard({
+export default function PingCard({
 	className,
 	icon: Icon,
 	iconClassName,
@@ -33,7 +33,7 @@ export default function StatisticsCard({
 	value,
 	variant = "primary",
 	...rest
-}: StatisticsCardProps) {
+}: PingCardProps) {
 	return (
 		<div
 			className={clsxm(
@@ -49,9 +49,9 @@ export default function StatisticsCard({
 					className={clsxm("rounded-lg p-2", [
 						variant === "primary" && ["bg-primary-50"],
 						variant === "secondary" && ["bg-secondary-50"],
-						variant === "warning" && ["bg-yellow-50"],
+						variant === "custom_warning" && ["bg-yellow-50"],
 						variant === "danger" && ["bg-red-50"],
-						variant === "success" && ["bg-green-50"],
+						variant === "custom_success" && ["bg-green-50"],
 					])}
 				>
 					<Icon
@@ -60,9 +60,9 @@ export default function StatisticsCard({
 							[
 								variant === "primary" && ["text-primary-500"],
 								variant === "secondary" && ["text-secondary-500"],
-								variant === "warning" && ["text-yellow-500"],
+								variant === "custom_warning" && ["text-yellow-500"],
 								variant === "danger" && ["text-red-500"],
-								variant === "success" && ["text-green-500"],
+								variant === "custom_success" && ["text-green-500"],
 							],
 							iconClassName
 						)}
@@ -76,11 +76,12 @@ export default function StatisticsCard({
 				</div>
 			) : (
 				<div className="w-full flex gap-2 flex-col ms-4">
-					<Typography variant="h1" color="secondary">
+					<Typography variant="h1" color={"primary"}>
 						{label}
 					</Typography>
-					{/* <Typography variant="h1">{value}</Typography> */}
-					<ProgressBar totalBars={10} completedBars={(value as number) ?? 0} />
+					<Typography variant="h1" color={variant}>
+						{value}
+					</Typography>
 				</div>
 			)}
 		</div>

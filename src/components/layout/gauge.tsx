@@ -31,7 +31,7 @@ export default function GaugeLayout({
 			{isLoading ? (
 				<Skeleton className="h-full w-full" />
 			) : (
-				<Typography variant="j1" className="text-center text-7xl">
+				<Typography variant="h1" className="text-center">
 					<GaugeMeter
 						valuegg={value}
 						color={color}

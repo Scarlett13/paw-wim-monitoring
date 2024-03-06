@@ -1,9 +1,9 @@
 export type MapMarker = {
-	siteid: string;
+	siteid: string | number;
 	sitename: string;
 	sitelat: number;
 	sitelong: number;
-	sitecolor: "red" | "green" | "yellow";
+	sitecolor: "red" | "green" | "yellow" | "orange";
 };
 
 export const dummyUppkbMarker: MapMarker[] = [

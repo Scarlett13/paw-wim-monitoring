@@ -8,6 +8,7 @@ interface IStatusCardV2 {
 	title: string;
 	value: string;
 	cardStatus: "ok" | "warning" | "off" | "plain";
+	onclick?: any;
 }
 
 const StatusCardV2 = ({
@@ -15,14 +16,19 @@ const StatusCardV2 = ({
 	title,
 	value,
 	cardStatus,
+	onclick,
 }: IStatusCardV2): FunctionComponent => {
 	return isLoading ? (
-		<div>
-			<Skeleton />
+		<div className="w-full h-full px-8">
+			<Skeleton className="h-32 w-full" />
 		</div>
 	) : (
-		<StatusCard cardstatus={cardStatus}>
-			<Typography variant="j1" className="text-center mb-">
+		<StatusCard
+			cardstatus={cardStatus}
+			className="shadow-md mb-4 mx-4 border border-grey hover:cursor-pointer"
+			onClick={onclick}
+		>
+			<Typography variant="j1" className="text-center mb-4">
 				{title}
 			</Typography>
 			<Typography variant="j1" className="text-center text-5xl">

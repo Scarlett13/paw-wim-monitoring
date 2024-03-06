@@ -55,7 +55,7 @@ const GaugeMeter = ({
 								"ON13",
 								"ON14",
 								"ON",
-						  ]
+							]
 						: undefined
 				}
 				pointers={pointers}
@@ -80,7 +80,7 @@ const GaugeMeter = ({
 				tickValuesDistance={20}
 				tickValuesColor={color}
 				textColor={color}
-				textFontSize={46}
+				textFontSize={30}
 				textSuffix={textSuffix}
 				textPrefix={textPrefix}
 				showTickValues={false}
@@ -89,7 +89,7 @@ const GaugeMeter = ({
 				disabled={true}
 				min={min}
 				max={max}
-				pathRadius={115}
+				pathRadius={80}
 			/>
 			<div className="border-t border-gray-200 z-40 -mt-10">
 				<Typography

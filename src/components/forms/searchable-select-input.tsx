@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import get from "lodash.get";
-import { Dispatch, SetStateAction } from "react";
+// import { Dispatch, SetStateAction } from "react";
 import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
 import { FiChevronDown, FiX } from "react-icons/fi";
 import Select, { components, MultiValue, StylesConfig } from "react-select";
@@ -17,10 +17,10 @@ export type SearchableSelectInputProps = {
 	readOnly?: boolean;
 	hideError?: boolean;
 	validation?: RegisterOptions;
-	options: { value: string; label: string }[];
+	options: { value: string | number; label: string }[];
 	containerClassName?: string;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	customSetData?: Dispatch<SetStateAction<any>>;
+	customSetData?: any;
 } & React.ComponentPropsWithoutRef<"select"> &
 	ExtractProps<Select>;
 
@@ -166,6 +166,8 @@ export default function SearchableSelectInput({
 						return (
 							<Select
 								{...field}
+								menuPortalTarget={document.body}
+								menuPosition={"fixed"}
 								value={
 									//? null is needed so if the selected value is not found in the options, it will clear the value
 									isMulti
@@ -183,8 +185,7 @@ export default function SearchableSelectInput({
 								onChange={(selectedOptions) => {
 									customSetData &&
 										customSetData(
-											(selectedOptions as (typeof options)[number])?.value ??
-												null
+											(selectedOptions as (typeof options)[any])?.value ?? null
 										);
 									isMulti
 										? field.onChange(
