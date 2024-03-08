@@ -15,7 +15,7 @@ export default function useSiteList() {
 
 	const [listSite, setListSite] = useState([]); // Typing the state with SiteOption interface
 	const [sortedSite, setSortedSite] = useState([]);
-	const { data, error } = useSwrV2(); // Custom hook to fetch data
+	const { data } = useSwrV2(); // Custom hook to fetch data
 
 	const handleParseSiteData = useCallback(async () => {
 		const temp: any = [];
@@ -24,7 +24,7 @@ export default function useSiteList() {
 		let validSelectedSiteId = selectedSiteId;
 		//@ts-ignore
 		if (data) {
-			console.log("errornya: " + error);
+			console.log("triggered listsite: ");
 			//@ts-ignore
 			for (const siteData of data) {
 				if (siteStatus === "all") {

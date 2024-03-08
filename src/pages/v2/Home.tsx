@@ -12,6 +12,7 @@ import Skeleton from "../../components/ui/default-skeleton";
 import { IndexRoute } from "../../routes/IndexRoute";
 import { findSiteById } from "../../utils/v2/array-utils-v2";
 import useSiteList from "../../hooks/use-site";
+// import useKeyPressed from "../../hooks/use-key-press";
 // import { useSwrV2 } from "../../hooks/use-swr";
 
 const Home = (): FunctionComponent => {
@@ -23,6 +24,8 @@ const Home = (): FunctionComponent => {
 	const { sortedSite } = useSiteList();
 
 	const selectedsite = findSiteById(sortedSite, selectedSiteId);
+
+	// The empty dependency array ensures that the effect runs only once on mount
 
 	return (
 		<main className="flex flex-wrap h-screen flex-row w-screen bg-black">

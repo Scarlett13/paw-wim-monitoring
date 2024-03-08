@@ -1,3 +1,4 @@
+// import { ListStart } from "lucide-react";
 import { roundToNearestTen } from "./number-utils-v2";
 
 export function parseDevicesPerSite(siteData: any) {
@@ -147,4 +148,38 @@ export function findSiteById(sitedata: any, siteid: number) {
 
 export const isSiteIdFound = (sites: any, siteIdToFind: number): boolean => {
 	return sites.some((site: any) => site.value === siteIdToFind);
+};
+
+export const getNextValue = (
+	currentValue: string | number,
+	options: any
+): string | number | null => {
+	if (!options) {
+		return null;
+	}
+
+	const currentIndex = options.findIndex(
+		(option: { value: string | number }) => option.value === currentValue
+	);
+	if (currentIndex === -1 || currentIndex === options.length - 1) {
+		return null; // No next value available
+	}
+	return options[currentIndex + 1].value;
+};
+
+export const getPreviousValue = (
+	currentValue: string | number,
+	options: any
+): string | number | null => {
+	if (!options) {
+		return null;
+	}
+
+	const currentIndex = options.findIndex(
+		(option: { value: string | number }) => option.value === currentValue
+	);
+	if (currentIndex <= 0) {
+		return null; // No previous value available
+	}
+	return options[currentIndex - 1].value;
 };

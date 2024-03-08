@@ -8,6 +8,7 @@ import { IndexRoute } from "../../routes/IndexRoute";
 import { useEffect, useState } from "react";
 import { useSwrV2 } from "../../hooks/use-swr";
 import useSiteList from "../../hooks/use-site";
+import useKeyPressed from "../../hooks/use-key-press";
 // import StatusCardV2 from "./status-card";
 
 const ViewConfig = ({}): FunctionComponent => {
@@ -47,9 +48,14 @@ const ViewConfig = ({}): FunctionComponent => {
 
 	useEffect(() => {
 		if (queryparam || queryparam === "") {
-			mutate("/api/site-status");
+			mutate("/v2/site-status");
 		}
 	}, [queryparam]);
+
+	// if (listSite && listSite.length > 0) {
+	// 	console.log("list site: " + listSite);
+	useKeyPressed();
+	// }
 
 	function handleSelectedSiteChange(id: number) {
 		navigate({
@@ -107,7 +113,9 @@ const ViewConfig = ({}): FunctionComponent => {
 									isMulti={false}
 									isLoading={isValidating}
 									disabled={isValidating}
+									// menuIsOpen={isopen}
 									required={false}
+									openMenuOnFocus={true}
 									customSetData={handleSelectedSiteChange}
 									options={listSite}
 									label={null}

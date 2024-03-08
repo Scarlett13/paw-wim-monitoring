@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { dummyImagePath } from "../types/map-marker";
 import { useSearch } from "@tanstack/router";
 import { IndexRoute } from "../routes/IndexRoute";
+import { useEffect, useState } from "react";
 
 export function useBukakaSiteStatus() {
 	const fetcher = () =>
@@ -92,14 +93,20 @@ export function useSiteImage(isUppkb?: boolean) {
 }
 
 export function useSwrV2() {
+	const [queryparam, setQueryparam] = useState("");
 	const { projecttype } = useSearch({
 		from: IndexRoute.fullPath,
 	});
 
-	const queryparam = projecttype > 0 ? `?projecttype=${projecttype}` : "";
+	// const queryparam = projecttype > 0 ? `?projecttype=${projecttype}` : "";
+	// console.log("queryparam: " + queryparam);
+
+	useEffect(() => {
+		setQueryparam(+projecttype > 0 ? `?projecttype=${projecttype}` : "");
+	}, [projecttype]);
 
 	const fetcher = async () => {
-		const res = await fetch(`/v2/site-status/${queryparam}`, {
+		const res = await fetch(`/v2/site-status${queryparam}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -122,33 +129,13 @@ export function useSwrV2() {
 		return res.json();
 	};
 
-	// const fetcher = () =>
-	// 	//pake proxy biar gak ke block cors
-	// 	fetch(`/v2/site-status/${queryparam}`, {
-	// 		method: "GET",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			"Access-Control-Allow-Origin": "*",
-	// 		},
-	// 	}).then((res) => {
-	// 		if (!res.ok) {
-	// 			const error = new Error("An error occurred while fetching the data.");
-	// 			// Attach extra info to the error object.
-	// 			error.info = await res.json();
-	// 			error.status = res.status;
-	// 			throw error;
-	// 		}
-
-	// 		return res.json();
-	// 	});
-
 	const { data, error, isLoading, isValidating, mutate } = useSWR(
-		"/v2/site-status",
+		`/v2/site-status${queryparam}`,
 		fetcher,
 		{
-			refreshInterval: 30000, //300 seconds
+			refreshInterval: 30000, //30 seconds
 			revalidateOnFocus: false,
-			revalidateIfStale: false,
+			revalidateIfStale: true,
 			revalidateOnReconnect: false,
 		}
 	);
