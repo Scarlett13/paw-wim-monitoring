@@ -4,7 +4,11 @@ import { useSwrV2 } from "./use-swr";
 import { useEffect, useState } from "react";
 import useSiteList from "./use-site";
 // import useSiteList from "./use-site";
-import { getNextValue, getPreviousValue } from "../utils/v2/array-utils-v2";
+import {
+	getNextValue,
+	getPreviousValue,
+	isSiteIdFound,
+} from "../utils/v2/array-utils-v2";
 // import { mutate } from "swr";
 
 export default function useKeyPressed() {
@@ -27,6 +31,12 @@ export default function useKeyPressed() {
 					siteStatus,
 				}),
 			});
+		} else {
+			const siteIdFound = isSiteIdFound(listSite, currentsiteid);
+
+			if (!siteIdFound) {
+				setcurrentsiteid((listSite[0] as any).value);
+			}
 		}
 	}, [currentsiteid]);
 
@@ -109,7 +119,7 @@ export default function useKeyPressed() {
 						console.log("arrowright currentsiteid:" + currentsiteid);
 						const gg = getNextValue(currentsiteid, listSite);
 
-						gg && setcurrentsiteid(gg);
+						setcurrentsiteid(gg);
 					}
 					break;
 
@@ -118,7 +128,7 @@ export default function useKeyPressed() {
 						console.log("arrowleft currentsiteid:" + currentsiteid);
 						const gg = getPreviousValue(currentsiteid, listSite);
 
-						gg && setcurrentsiteid(gg);
+						setcurrentsiteid(gg);
 					}
 					break;
 				default:
